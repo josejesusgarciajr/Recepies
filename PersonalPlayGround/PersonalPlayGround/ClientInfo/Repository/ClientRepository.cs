@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace PersonalPlayGround.ClientInfo
+namespace PersonalPlayGround.ClientInfo.Repository
 {
     public class ClientRepository : IClientRepository
     {

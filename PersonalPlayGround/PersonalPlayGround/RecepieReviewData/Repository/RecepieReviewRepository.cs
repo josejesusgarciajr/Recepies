@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace PersonalPlayGround.RecepieReviewData
+namespace PersonalPlayGround.RecepieReviewData.Repository
 {
     public class RecepieReviewRepository : IRecepieReviewRepository
     {

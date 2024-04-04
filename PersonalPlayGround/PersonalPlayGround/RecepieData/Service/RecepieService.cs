@@ -1,9 +1,10 @@
 ﻿using PersonalPlayGround.Documents;
+using PersonalPlayGround.RecepieData.Repository;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
 
-namespace PersonalPlayGround.RecepieData
+namespace PersonalPlayGround.RecepieData.Service
 {
     public class RecepieService : IRecepieService
     {

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
-using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.Documents;
 using PersonalPlayGround.RecepieData;
+using PersonalPlayGround.RecepieData.Service;
 using PersonalPlayGround.RecepieReviewData;
+using PersonalPlayGround.RecepieReviewData.Service;
 
 namespace PersonalPlayGround.Controllers
 {

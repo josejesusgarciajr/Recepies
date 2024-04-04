@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace PersonalPlayGround.ClientInfo
+namespace PersonalPlayGround.ClientInfo.Repository
 {
-    public interface IClientService
+    public interface IClientRepository
     {
         List<Client> GetAllClients();
         Client GetClientById(int clientId);
-        bool AuthorizeClient(string username, string password);
+        Client GetClientByCredentials(string username, string password);
         Client GetClientByUsername(string username);
         bool AddClient(Client client);
     }

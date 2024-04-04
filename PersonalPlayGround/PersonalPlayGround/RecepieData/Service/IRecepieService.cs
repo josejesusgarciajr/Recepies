@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 
-namespace PersonalPlayGround.RecepieData
+namespace PersonalPlayGround.RecepieData.Service
 {
     public interface IRecepieService
     {

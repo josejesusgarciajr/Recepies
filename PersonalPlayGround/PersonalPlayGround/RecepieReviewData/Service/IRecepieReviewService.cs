@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PersonalPlayGround.RecepieReviewData
+namespace PersonalPlayGround.RecepieReviewData.Service
 {
     public interface IRecepieReviewService
     {

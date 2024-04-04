@@ -1,8 +1,9 @@
-﻿using PersonalPlayGround.ClientInfo;
+﻿using PersonalPlayGround.ClientInfo.Repository;
+using PersonalPlayGround.RecepieReviewData.Repository;
 using System;
 using System.Collections.Generic;
 
-namespace PersonalPlayGround.RecepieReviewData
+namespace PersonalPlayGround.RecepieReviewData.Service
 {
     public class RecepieReviewService : IRecepieReviewService
     {

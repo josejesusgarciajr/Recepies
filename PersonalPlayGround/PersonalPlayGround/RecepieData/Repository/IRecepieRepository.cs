@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PersonalPlayGround.RecepieData
+namespace PersonalPlayGround.RecepieData.Repository
 {
     public interface IRecepieRepository
     {

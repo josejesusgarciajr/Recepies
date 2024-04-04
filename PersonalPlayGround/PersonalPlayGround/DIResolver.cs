@@ -1,6 +1,11 @@
 ﻿using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.RecepieData;
+using PersonalPlayGround.RecepieData.Repository;
+using PersonalPlayGround.RecepieData.Service;
 using PersonalPlayGround.RecepieReviewData;
+using PersonalPlayGround.RecepieReviewData.Repository;
+using PersonalPlayGround.RecepieReviewData.Service;
 using System.Web.Mvc;
 using Unity;
 using Unity.AspNet.Mvc;

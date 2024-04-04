@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using PersonalPlayGround.ClientInfo.Repository;
+using System.Collections.Generic;
 
-namespace PersonalPlayGround.ClientInfo
+namespace PersonalPlayGround.ClientInfo.Repository
 {
     public class ClientService : IClientService
     {

@@ -1,4 +1,5 @@
 ﻿using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.ClientInfo.Repository;
 using System.Web.Mvc;
 using System.Web.Security;
 
