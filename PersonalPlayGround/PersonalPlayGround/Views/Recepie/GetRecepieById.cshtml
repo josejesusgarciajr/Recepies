@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "GetRecepieById";
+
+    PersonalPlayGround.RecepieData.Recepie recepie = Model;
 }
 
 
@@ -21,27 +23,46 @@
     <div class="container">
         <h2 class="display-2 text-center">Reviews</h2>
 
-        @foreach(PersonalPlayGround.RecepieReviewData.RecepieReview review in Model.Ratings)
+        @if(recepie.Ratings.Count > 0)
+        {
+            <div>
+                <h6 class="display-6">Average Rating: @recepie.Ratings.Average(r => r.Rating)</h6>
+            </div>
+        }
+
+        @foreach(PersonalPlayGround.RecepieReviewData.RecepieReview review in recepie.Ratings)
         {
 
             <div class="card text-center">
+
                 <div class="card-header">
                     @review.Client.Name
                 </div>
+
                 <div class="card-body">
                     <h5 class="card-title">@review.Rating</h5>
                     <p class="card-text">@review.Review</p>
+
+                    @if (review.Client.UserName == User.Identity.Name)
+                    {
+                        <a class="btn btn-outline-dark">Edit Review</a>
+                    }
                 </div>
+
                 <div class="card-footer text-muted">
                     @review.ReviewDate
                 </div>
+
             </div>
             <br />
         }
     </div>
 
-    <div class="container">
-        <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "Recepie", new { recepieId = Model.Id})">Add Review</a>
-    </div>
+    @if (!ViewBag.ClientLeftReview)
+    {
+        <div class="container">
+            <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "Recepie", new { recepieId = Model.Id})">Add Review</a>
+        </div>
+    }
 </body>
 

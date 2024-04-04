@@ -1,4 +1,5 @@
 ﻿using PersonalPlayGround.Data;
+using PersonalPlayGround.RecepieReviewData;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -34,19 +35,20 @@ namespace PersonalPlayGround.ClientInfo.Repository
             return _database.Clients.Where(client => client.UserName.Equals(username)).FirstOrDefault();
         }
 
-        public bool AddClient(Client client)
+        public void AddClient(Client client)
         {
-            Client existingClient = GetClientByUsername(client.UserName);
-
-            if(existingClient != null)
-            {
-                return false;
-            }
-
             _database.Entry(client).State = EntityState.Added;
             _database.SaveChanges();
+        }
 
-            return true;
+        public RecepieReview ClientReview(int clientId, int recepieId)
+        {
+            return _database.RecepieReviews
+                    .Where
+                    (
+                        rr => rr.RecepieId == recepieId 
+                        && rr.ClientId == clientId
+                    ).FirstOrDefault();
         }
     }
 }

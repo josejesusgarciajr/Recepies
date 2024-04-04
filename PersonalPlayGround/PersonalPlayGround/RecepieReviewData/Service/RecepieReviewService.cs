@@ -1,4 +1,5 @@
-﻿using PersonalPlayGround.ClientInfo.Repository;
+﻿using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.RecepieReviewData.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace PersonalPlayGround.RecepieReviewData.Service
         public void AddRecepieReview(RecepieReview recepieReview, string clientUsername)
         {
             recepieReview.ReviewDate = DateTime.UtcNow;
-            recepieReview.Client = _clientService.GetClientByUsername(clientUsername);
+            Client client = _clientService.GetClientByUsername(clientUsername);
+            recepieReview.ClientId = client.Id;
 
             _recepieReviewRepository.AddRecepieReview(recepieReview);
         }

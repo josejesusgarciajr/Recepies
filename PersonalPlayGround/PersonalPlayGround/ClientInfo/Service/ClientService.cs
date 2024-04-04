@@ -1,4 +1,4 @@
-﻿using PersonalPlayGround.ClientInfo.Repository;
+﻿using PersonalPlayGround.RecepieReviewData;
 using System.Collections.Generic;
 
 namespace PersonalPlayGround.ClientInfo.Repository
@@ -14,7 +14,15 @@ namespace PersonalPlayGround.ClientInfo.Repository
 
         public bool AddClient(Client client)
         {
-            return _clientRepository.AddClient(client);
+            Client existingClient = GetClientByUsername(client.UserName);
+
+            if (existingClient != null)
+            {
+                return false;
+            }
+
+            _clientRepository.AddClient(client);
+            return true;
         }
 
         public bool AuthorizeClient(string username, string password)
@@ -32,6 +40,18 @@ namespace PersonalPlayGround.ClientInfo.Repository
             }
 
             return false;
+        }
+
+        public bool ClientLeftReview(int clientId, int recepieId)
+        {
+            RecepieReview recepieReview = _clientRepository.ClientReview(clientId, recepieId);
+
+            if(recepieReview == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public List<Client> GetAllClients()

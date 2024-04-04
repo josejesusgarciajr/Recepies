@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string userName = "Please Log In";
+    if(!String.IsNullOrEmpty(User.Identity.Name))
+    {
+        userName = User.Identity.Name;
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,7 +20,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Jose Garcia", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink(userName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
