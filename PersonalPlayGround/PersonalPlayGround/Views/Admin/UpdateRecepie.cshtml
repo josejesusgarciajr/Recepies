@@ -1,0 +1,66 @@
+﻿@model PersonalPlayGround.RecepieData.Recepie
+
+<h2 class="display-4 text-center">Update Recepie</h2>
+
+<div class="row">
+
+    <div class="col-3">
+        <form action="@Url.Action("UpdateRecepieInDatabase", "Admin")" method="post" enctype="multipart/form-data">
+
+            @Html.Hidden("Id", Model.Id)
+
+            <div class="form-group">
+                <label for="recepieName">Recepie Name:</label>
+                @Html.TextBox("Name", Model.Name, new { @class = "form-control", @id = "recepieName", @style = "width: 100%;", placeholder = "Update Recepie Name" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="recepieDescription">Recepie Description:</label>
+                @Html.TextArea("Description", Model.Description, new { @class = "form-control", @id = "recepieDescription", @rows = "12" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="uploadImageId">Replace Image:</label>
+                @Html.TextBox("uploadImage", null, new { type = "file", @class = "form-control-file", name = "uploadImage", id = "uploadImageId" })
+            </div>
+
+            <br />
+            <div class="form-check form-check-inline">
+                @Html.CheckBox("Active", Model.Active, new { @class = "form-check-input", id = "inlineCheckbox1", @checked = "checked" })
+                <label class="form-check-label" for="inlineCheckbox1">Active</label>
+            </div>
+
+            @Html.Hidden("ImageURL", Model.ImageURL)
+
+            <br /><br />
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="col-9" id="imagePreview">
+        <img src="@Url.Content(Model.ImageURL)" width="100%;" height="560px;" />
+    </div>
+
+</div>
+
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="@Url.Content("~/Scripts/React-Components/ImagePreview.jsx")"></script>
+
+<script>
+    function renderImagePreview(file) {
+        ReactDOM.render(
+            React.createElement(ImagePreview, { selectedFile: file }), document.getElementById('imagePreview')
+        );
+    }
+
+    document.getElementById('uploadImageId').addEventListener('change', function () {
+        console.log('file selected');
+        const file = this.files[0];
+        renderImagePreview(file)
+    });
+</script>

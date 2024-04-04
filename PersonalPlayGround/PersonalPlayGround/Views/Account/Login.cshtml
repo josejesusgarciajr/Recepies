@@ -1,0 +1,30 @@
+﻿@model PersonalPlayGround.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+<form action="@Url.Action("Login", "Account")" method="post">
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" class="form-control" required />
+    </div>
+
+    <br />
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" required />
+    </div>
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-outline-primary col-2">Login</button>
+        <div class="col-1"></div>
+        <a class="btn btn-outline-success col-2" href="@Url.Action("CreateAccount", "Account")">Create Account</a>
+    </div>
+</form>

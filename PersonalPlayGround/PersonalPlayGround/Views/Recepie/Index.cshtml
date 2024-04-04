@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Recepies!</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Recepie Name</th>
+            <th scope="col">Recepie Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recepieDto in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("GetRecepieById", "Recepie", new { recepieId = recepieDto.Id })">@recepieDto.Name</a></td>
+                <td>@recepieDto.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

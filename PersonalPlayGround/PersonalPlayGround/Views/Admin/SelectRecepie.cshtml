@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "SelectRecepie";
+
+    var action = ViewData["Action"];
+}
+
+@if (action.Equals("Update"))
+{
+    <h2 class="display-4 text-center">Update Recepies</h2>
+}
+
+@if (action.Equals("Delete"))
+{
+    <h2 class="display-4 text-center">Delete Recepies</h2>
+}
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recepie in Model)
+        {
+            <tr>
+                <th scope="row">@recepie.Id</th>
+                <td>@recepie.Name</td>
+                <td>@recepie.Description</td>
+
+                @if (action.Equals("Update"))
+                {
+                    <td>
+                        <a href="@Url.Action("UpdateRecepie", "Admin", new { recepieId = recepie.Id })" class="btn btn-outline-primary">Update</a>
+                    </td>
+                }
+
+                @if (action.Equals("Delete"))
+                {
+                    <td>
+                        <a href="@Url.Action("DeleteRecepie", "Admin", new { recepieId = recepie.Id })" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="display-4 text-center">Admin Page</h2>
+
+<div class="container">
+    <p class="lead text-center image-container">
+        <code>The power is in your hands</code>
+    </p>
+
+    <img src="@Url.Content("~/Images/Tech.jpg")" alt="tech" width="100%;" height="660px;" style="margin-bottom: 20px;"/>
+
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <a href="@Url.Action("AddRecepie", "Admin")" class="btn btn-outline-dark">Add Recepie</a>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <a href="@Url.Action("SelectRecepie", "Admin", new { task = "Update"})" class="btn btn-outline-dark">Update Recepies</a>
+        </div>
+        <div class="col d-flex justify-content-center">
+            <a href="@Url.Action("SelectRecepie", "Admin", new { task = "Delete"})" class="btn btn-outline-dark">Delete Recepies</a>
+        </div>
+    </div>
+</div>

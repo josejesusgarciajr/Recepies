@@ -1,0 +1,51 @@
+﻿@model PersonalPlayGround.ClientInfo.Client
+@{
+    ViewBag.Title = "CreateAccount";
+}
+
+<h2>CreateAccount</h2>
+
+<div class="row">
+
+    <div class="col-8">
+        <img src="~/Images/CreateAccount.jpg"/>
+    </div>
+    
+    <div class="col-4">
+        <form action="@Url.Action("AddAccount", "Account")" method="post">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+
+                <br /><br />
+
+                @Html.TextBox("Name", null, new { @class = "form-control", @id = "name", @style = "width: 100%;", placeholder = "Jose Jesus Garcia Jr" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="userName">UserName</label>
+
+                <br /><br />
+
+                @Html.TextBox("UserName", null, new { @class = "form-control", @id = "userName", @style = "width: 100%;", placeholder = "josejesusgarciajr" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+
+                <br /><br />
+
+                      <div class="col-sm-10">
+                          @Html.Password("Password", null, new { @class = "form-control", placeholder = "Password" })
+                      </div>
+            </div>
+
+            <br />
+            <button class="btn btn-outline-success" type="submit">Create Account</button>
+        </form>
+    </div>
+
+</div>
+

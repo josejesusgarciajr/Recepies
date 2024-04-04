@@ -1,0 +1,80 @@
+﻿@model PersonalPlayGround.RecepieReviewData.RecepieReview
+@{
+    ViewBag.Title = "AddRecepieReview";
+    PersonalPlayGround.RecepieData.Recepie recepie = ViewBag.Recepie as PersonalPlayGround.RecepieData.Recepie;
+}
+
+<style>
+        /* Set background image dynamically */
+    body {
+        background-image: url('@Url.Content(recepie.ImageURL)');
+        background-size: cover; /* Adjust to cover entire background */
+        /* Add more background properties as needed */
+    }
+
+    h1, h2, h3, h4, h5, h6, p, span {
+        color: black; /* Set text color to black */
+        background-color: white; /* Set background color to white */
+    }
+
+</style>
+
+<h2 class="display-4 text-center">Add Recepie Review</h2>
+
+<div class="row">
+
+    <div class="col lead d-flex justify-content-center">
+        <p>
+            Leave your review for @recepie.Name! Let us know what you like, what you don't like, 
+            whether you come back again or anything else that is on your mind.
+        </p>
+    </div>
+
+    <div class="col lead d-flex justify-content-center">
+        <img src="@Url.Content(recepie.ImageURL)" width="300px;" height="140px;" />
+    </div>
+
+    <form action="@Url.Action("AddRecepieReviewToDatabase", "Recepie")" method="post">
+
+        @Html.Hidden("RecepieId", recepie.Id);
+
+        <div class="form-group col d-flex justify-content-center">
+            @Html.TextArea("Review", null, new { @class = "form-control", @id = "reviewDescription", @rows = "12", placeholder = "Let us know what you think!" })
+        </div>
+
+        <div class="form-group">
+            <span for="ratingRangeInputId" class="form-label">Rating:</span>
+            <input type="range" class="form-range" min="0" max="100" step="1" id="ratingRangeInputId" name="Rating">
+        </div>
+
+        <div>
+            <div id="ratingRangeNumber"></div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">Add Review</button>
+    </form>
+
+</div>
+
+<!-- Container to render React app -->
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="@Url.Content("~/Scripts/React-Components/RangeNumber.jsx")"></script>
+
+<script>
+
+    const rangeInput = document.getElementById('ratingRangeInputId');
+
+    function RenderRangeNumber(value) {
+        ReactDOM.render(
+            React.createElement(RangeNumber, { currentValue: value }), document.getElementById('ratingRangeNumber')
+        );
+    }
+
+    rangeInput.addEventListener('input', function () {
+        var currentValue = rangeInput.value;
+        RenderRangeNumber(currentValue);
+    })
+
+</script>

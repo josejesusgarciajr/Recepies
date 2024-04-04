@@ -1,0 +1,47 @@
+﻿@model PersonalPlayGround.RecepieData.Recepie
+
+@{
+    ViewBag.Title = "GetRecepieById";
+}
+
+
+<body>
+    <div class="container">
+        <h2 class="display-4 text-center">@Model.Name</h2>
+
+        <p class="lead">
+            @Model.Description
+        </p>
+    </div>
+
+    <div class="container">
+        <img src="@Url.Content(Model.ImageURL)" alt="text" width="100%" height="660px">
+    </div>
+
+    <div class="container">
+        <h2 class="display-2 text-center">Reviews</h2>
+
+        @foreach(PersonalPlayGround.RecepieReviewData.RecepieReview review in Model.Ratings)
+        {
+
+            <div class="card text-center">
+                <div class="card-header">
+                    @review.Client.Name
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@review.Rating</h5>
+                    <p class="card-text">@review.Review</p>
+                </div>
+                <div class="card-footer text-muted">
+                    @review.ReviewDate
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+
+    <div class="container">
+        <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "Recepie", new { recepieId = Model.Id})">Add Review</a>
+    </div>
+</body>
+
