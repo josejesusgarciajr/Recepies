@@ -13,7 +13,7 @@ namespace PersonalPlayGround
         {
             var container = new UnityContainer();
 
-            // Register your services and interfaces
+            // Register services and interfaces
 
             // Recepie
             container.RegisterType<IRecepieRepository, RecepieRepository>();
