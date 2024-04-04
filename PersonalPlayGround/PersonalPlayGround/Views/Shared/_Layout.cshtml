@@ -1,8 +1,15 @@
 ﻿@{ 
     string userName = "Please Log In";
+    var isAdmin = false;
+
     if(!String.IsNullOrEmpty(User.Identity.Name))
     {
         userName = User.Identity.Name;
+    }
+
+    if(ViewBag.IsAdmin != null)
+    {
+        isAdmin = ViewBag.IsAdmin;
     }
 }
 
@@ -30,8 +37,12 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = string.Empty }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = string.Empty }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Recepies", "Index", "Recepie", new { area = string.Empty},new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = string.Empty }, new { @class = "nav-link"})</li>
+                    <li>@Html.ActionLink("Recepies", "Index", "Recepie", new { area = string.Empty},new { @class = "nav-link" })</li>\
+
+                    @if (isAdmin)
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = string.Empty }, new { @class = "nav-link"})</li>
+                    }
                 </ul>
             </div>
         </div>

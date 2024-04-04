@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace PersonalPlayGround.Controllers
 {
     [Authorize]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly IRecepieService _recepieService;
         public AdminController() { }

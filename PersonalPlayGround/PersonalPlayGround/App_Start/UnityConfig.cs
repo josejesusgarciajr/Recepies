@@ -1,3 +1,4 @@
+using PersonalPlayGround.ClientInfo.Repository;
 using System;
 
 using Unity;
@@ -42,6 +43,8 @@ namespace PersonalPlayGround
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IClientService, ClientService>();
+            container.RegisterType<IClientRepository, ClientRepository>();
         }
     }
 }

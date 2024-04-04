@@ -3,7 +3,7 @@
 namespace PersonalPlayGround.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

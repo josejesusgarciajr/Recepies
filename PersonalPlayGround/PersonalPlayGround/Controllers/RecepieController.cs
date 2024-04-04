@@ -12,7 +12,7 @@ using PersonalPlayGround.RecepieReviewData.Service;
 namespace PersonalPlayGround.Controllers
 {
     [Authorize]
-    public class RecepieController : Controller
+    public class RecepieController : BaseController
     {
         private readonly IRecepieService _recepieService;
         private readonly IRecepieReviewService _recepieReviewService;
