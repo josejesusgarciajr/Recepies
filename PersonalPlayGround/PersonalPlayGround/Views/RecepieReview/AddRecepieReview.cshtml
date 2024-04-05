@@ -34,7 +34,7 @@
         <img src="@Url.Content(recepie.ImageURL)" width="300px;" height="140px;" />
     </div>
 
-    <form action="@Url.Action("AddRecepieReviewToDatabase", "Recepie")" method="post">
+    <form action="@Url.Action("AddRecepieReviewToDatabase", "RecepieReview")" method="post">
 
         @Html.Hidden("RecepieId", recepie.Id);
 

@@ -61,7 +61,7 @@
     @if (!ViewBag.ClientLeftReview)
     {
         <div class="container">
-            <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "Recepie", new { recepieId = Model.Id})">Add Review</a>
+            <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "RecepieReview", new { recepieId = Model.Id})">Add Review</a>
         </div>
     }
 </body>

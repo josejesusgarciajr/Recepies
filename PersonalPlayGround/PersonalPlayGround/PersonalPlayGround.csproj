@@ -280,6 +280,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecepieController.cs" />
+    <Compile Include="Controllers\RecepieReviewController.cs" />
     <Compile Include="Data\ApplictionDatabase.cs" />
     <Compile Include="DIResolver.cs" />
     <Compile Include="Documents\FileDirectory.cs" />
@@ -360,7 +361,7 @@
     <Content Include="Views\Admin\SelectRecepie.cshtml" />
     <Content Include="Views\Admin\UpdateRecepie.cshtml" />
     <Content Include="Views\Admin\AddRecepie.cshtml" />
-    <Content Include="Views\Recepie\AddRecepieReview.cshtml" />
+    <Content Include="Views\RecepieReview\AddRecepieReview.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\CreateAccount.cshtml" />
   </ItemGroup>
