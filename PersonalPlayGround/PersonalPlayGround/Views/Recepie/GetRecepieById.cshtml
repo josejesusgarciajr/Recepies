@@ -45,7 +45,7 @@
 
                     @if (review.Client.UserName == User.Identity.Name)
                     {
-                        <a class="btn btn-outline-dark">Edit Review</a>
+                        <a href="@Url.Action("UpdateRecepieReview", "RecepieReview", new { recepieReviewId = review.RecepieReviewId })" class="btn btn-outline-dark">Edit Review</a>
                     }
                 </div>
 

@@ -3,6 +3,7 @@ using PersonalPlayGround.RecepieData;
 using PersonalPlayGround.RecepieData.Service;
 using PersonalPlayGround.RecepieReviewData;
 using PersonalPlayGround.RecepieReviewData.Service;
+using System;
 using System.Web.Mvc;
 
 namespace PersonalPlayGround.Controllers
@@ -46,6 +47,23 @@ namespace PersonalPlayGround.Controllers
         {
             string clientUsername = User.Identity.Name;
             _recepieReviewService.AddRecepieReview(recepieReview, clientUsername);
+
+            return RedirectToAction("GetRecepieById", "Recepie", new { recepieId = recepieReview.RecepieId });
+        }
+
+        public ActionResult UpdateRecepieReview(int recepieReviewId)
+        {
+            RecepieReview recepieReview = _recepieReviewService.GetRecepieReviewById(recepieReviewId);
+            Recepie recepie = _recepieService.GetRecepieById(recepieReview.RecepieId);
+
+            ViewBag.Recepie = recepie;
+            return View(recepieReview);
+        }
+
+        public ActionResult UpdateRecepieReviewInDatabase(RecepieReview recepieReview)
+        {
+            recepieReview.ReviewDate = DateTime.UtcNow;
+            _recepieReviewService.UpdateRecepieReview(recepieReview);
 
             return RedirectToAction("GetRecepieById", "Recepie", new { recepieId = recepieReview.RecepieId });
         }

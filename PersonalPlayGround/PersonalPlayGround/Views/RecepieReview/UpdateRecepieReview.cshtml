@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "UpdateRecepieReview";
+    PersonalPlayGround.RecepieReviewData.RecepieReview recepieReview = Model;
+    PersonalPlayGround.RecepieData.Recepie recepie = ViewBag.Recepie;
+}
+
+<h2 class="display-4 text-center">Update Recepie Review</h2>
+
+
+<form action="@Url.Action("UpdateRecepieReviewInDatabase", "RecepieReview")" method="post">
+
+    <div class="row">
+
+        <div class="col-8">
+            <img src="@Url.Content(recepie.ImageURL)" width="800px;" />
+        </div>
+
+        <div class="col-4 container">
+
+            @Html.Hidden("RecepieReviewId", recepieReview.RecepieReviewId)
+            @Html.Hidden("RecepieId", recepie.Id)
+            @Html.Hidden("ClientId", recepieReview.ClientId)
+
+            <div class="form-group col d-flex justify-content-center">
+                @Html.TextArea("Review", null, new { @class = "form-control", @id = "reviewDescription", @rows = "12", placeholder = "Let us know what you think!" })
+            </div>
+
+            <br />
+            <div class="form-group">
+                <span for="ratingRangeInputId" class="form-label">Rating:</span>
+                <input type="range" class="form-range" min="0" max="100" step="1" id="ratingRangeInputId" name="Rating" value="@recepieReview.Rating">
+                <div id="ratingRangeNumber" class="text-center"></div>
+            </div>
+
+            <br />
+            <div style="text-align: right;" class="container">
+                <button type="submit" class="btn btn-outline-primary">UPDATE</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<!-- Container to render React app -->
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="@Url.Content("~/Scripts/React-Components/RangeNumber.jsx")"></script>
+
+<script>
+    const rangeInput = document.getElementById('ratingRangeInputId');
+    const renderTo = 'ratingRangeNumber';
+
+    function RenderRangeNumber(value) {
+        ReactDOM.render(
+            React.createElement(RangeNumber, { currentValue: value }), document.getElementById(renderTo)
+        );
+    }
+
+    rangeInput.addEventListener('input', function () {
+        var currentValue = rangeInput.value;
+        console.log(currentValue);
+        RenderRangeNumber(currentValue);
+    });
+
+    // display rating on page load
+    ReactDOM.render(
+        React.createElement(RangeNumber, { currentValue: rangeInput.value }), document.getElementById(renderTo)
+    );
+
+</script>
+
+

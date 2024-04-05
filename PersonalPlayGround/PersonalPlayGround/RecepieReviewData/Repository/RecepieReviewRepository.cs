@@ -19,15 +19,25 @@ namespace PersonalPlayGround.RecepieReviewData.Repository
             _database.Entry(recepieReview).State = EntityState.Added;
             _database.SaveChanges();
         }
-
-        public List<RecepieReview> GetAllRecepieReviews()
+        public void UpdateRecepieReview(RecepieReview recepieReview)
         {
-            return _database.RecepieReviews.ToList();
+            _database.Entry(recepieReview).State = EntityState.Modified;
+            _database.SaveChanges();
+        }
+
+        public RecepieReview GetRecepieReviewById(int recepieReviewId)
+        {
+            return _database.RecepieReviews.Find(recepieReviewId);
         }
 
         public List<RecepieReview> GetRecepieReviewsByRecepieId(int recepieId)
         {
             return _database.RecepieReviews.Where(r => r.RecepieId == recepieId).ToList();
+        }
+
+        public List<RecepieReview> GetAllRecepieReviews()
+        {
+            return _database.RecepieReviews.ToList();
         }
     }
 }

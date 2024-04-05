@@ -26,6 +26,11 @@ namespace PersonalPlayGround.RecepieReviewData.Service
             _recepieReviewRepository.AddRecepieReview(recepieReview);
         }
 
+        public RecepieReview GetRecepieReviewById(int recepieReviewId)
+        {
+            return _recepieReviewRepository.GetRecepieReviewById(recepieReviewId);
+        }
+
         public List<RecepieReview> GetAllRecepieReviews()
         {
             return _recepieReviewRepository.GetAllRecepieReviews();
@@ -34,6 +39,11 @@ namespace PersonalPlayGround.RecepieReviewData.Service
         public List<RecepieReview> GetRecepieReviewsByRecepieId(int recepieId)
         {
             return _recepieReviewRepository.GetRecepieReviewsByRecepieId(recepieId);
+        }
+
+        public void UpdateRecepieReview(RecepieReview recepieReview)
+        {
+            _recepieReviewRepository.UpdateRecepieReview(recepieReview);
         }
     }
 }

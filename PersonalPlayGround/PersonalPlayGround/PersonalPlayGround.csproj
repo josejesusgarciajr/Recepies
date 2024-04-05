@@ -364,6 +364,7 @@
     <Content Include="Views\RecepieReview\AddRecepieReview.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\RecepieReview\UpdateRecepieReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Recepies\" />
