@@ -38,6 +38,12 @@ namespace PersonalPlayGround.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
+        }
+
         public ActionResult CreateAccount()
         {
             return View();
