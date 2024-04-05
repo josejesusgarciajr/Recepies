@@ -65,16 +65,22 @@
 <script>
 
     const rangeInput = document.getElementById('ratingRangeInputId');
+    const renderTo = 'ratingRangeNumber';
 
     function RenderRangeNumber(value) {
         ReactDOM.render(
-            React.createElement(RangeNumber, { currentValue: value }), document.getElementById('ratingRangeNumber')
+            React.createElement(RangeNumber, { currentValue: value }), document.getElementById(renderTo)
         );
     }
 
     rangeInput.addEventListener('input', function () {
         var currentValue = rangeInput.value;
         RenderRangeNumber(currentValue);
-    })
+    });
+
+    // render range value at page load
+    ReactDOM.render(
+        React.createElement(RangeNumber, { currentValue: rangeInput.value }), document.getElementById(renderTo)
+    );
 
 </script>
