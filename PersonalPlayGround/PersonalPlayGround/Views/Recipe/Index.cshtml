@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Recipes!</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Recipe Name</th>
+            <th scope="col">Recipe Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recipeDto in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("GetRecipeById", "Recipe", new { recipeId = recipeDto.Id })">@recipeDto.Name</a></td>
+                <td>@recipeDto.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

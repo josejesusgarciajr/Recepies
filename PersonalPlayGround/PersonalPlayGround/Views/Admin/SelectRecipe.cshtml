@@ -1,18 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "SelectRecepie";
+    ViewBag.Title = "SelectRecipe";
 
     var action = ViewData["Action"];
 }
 
 @if (action.Equals("Update"))
 {
-    <h2 class="display-4 text-center">Update Recepies</h2>
+    <h2 class="display-4 text-center">Update Recipes</h2>
 }
 
 @if (action.Equals("Delete"))
 {
-    <h2 class="display-4 text-center">Delete Recepies</h2>
+    <h2 class="display-4 text-center">Delete Recipes</h2>
 }
 
 <table class="table">
@@ -25,24 +25,24 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var recepie in Model)
+        @foreach (var recipe in Model)
         {
             <tr>
-                <th scope="row">@recepie.Id</th>
-                <td>@recepie.Name</td>
-                <td>@recepie.Description</td>
+                <th scope="row">@recipe.Id</th>
+                <td>@recipe.Name</td>
+                <td>@recipe.Description</td>
 
                 @if (action.Equals("Update"))
                 {
                     <td>
-                        <a href="@Url.Action("UpdateRecepie", "Admin", new { recepieId = recepie.Id })" class="btn btn-outline-primary">Update</a>
+                        <a href="@Url.Action("UpdateRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-primary">Update</a>
                     </td>
                 }
 
                 @if (action.Equals("Delete"))
                 {
                     <td>
-                        <a href="@Url.Action("DeleteRecepie", "Admin", new { recepieId = recepie.Id })" class="btn btn-outline-danger">Delete</a>
+                        <a href="@Url.Action("DeleteRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-danger">Delete</a>
                     </td>
                 }
             </tr>

@@ -1,11 +1,11 @@
 ﻿using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
-using PersonalPlayGround.RecepieData;
-using PersonalPlayGround.RecepieData.Repository;
-using PersonalPlayGround.RecepieData.Service;
-using PersonalPlayGround.RecepieReviewData;
-using PersonalPlayGround.RecepieReviewData.Repository;
-using PersonalPlayGround.RecepieReviewData.Service;
+using PersonalPlayGround.RecipeData;
+using PersonalPlayGround.RecipeData.Repository;
+using PersonalPlayGround.RecipeData.Service;
+using PersonalPlayGround.RecipeReviewData;
+using PersonalPlayGround.RecipeReviewData.Repository;
+using PersonalPlayGround.RecipeReviewData.Service;
 using System.Web.Mvc;
 using Unity;
 using Unity.AspNet.Mvc;
@@ -20,13 +20,13 @@ namespace PersonalPlayGround
 
             // Register services and interfaces
 
-            // Recepie
-            container.RegisterType<IRecepieRepository, RecepieRepository>();
-            container.RegisterType<IRecepieService, RecepieService>();
+            // Recipe
+            container.RegisterType<IRecipeRepository, RecipeRepository>();
+            container.RegisterType<IRecipeService, RecipeService>();
 
-            // RecepieReviews
-            container.RegisterType<IRecepieReviewRepository, RecepieReviewRepository>();
-            container.RegisterType<IRecepieReviewService,  RecepieReviewService>();
+            // RecipeReviews
+            container.RegisterType<IRecipeReviewRepository, RecipeReviewRepository>();
+            container.RegisterType<IRecipeReviewService,  RecipeReviewService>();
 
             // Client
             container.RegisterType<IClientRepository,  ClientRepository>();

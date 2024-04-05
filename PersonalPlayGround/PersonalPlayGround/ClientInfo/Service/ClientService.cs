@@ -1,4 +1,4 @@
-﻿using PersonalPlayGround.RecepieReviewData;
+﻿using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 
 namespace PersonalPlayGround.ClientInfo.Repository
@@ -42,11 +42,11 @@ namespace PersonalPlayGround.ClientInfo.Repository
             return false;
         }
 
-        public bool ClientLeftReview(int clientId, int recepieId)
+        public bool ClientLeftReview(int clientId, int recipeId)
         {
-            RecepieReview recepieReview = _clientRepository.ClientReview(clientId, recepieId);
+            RecipeReview recipeReview = _clientRepository.ClientReview(clientId, recipeId);
 
-            if(recepieReview == null)
+            if(recipeReview == null)
             {
                 return false;
             }

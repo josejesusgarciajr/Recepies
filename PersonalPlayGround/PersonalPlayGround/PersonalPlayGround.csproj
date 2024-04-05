@@ -279,8 +279,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RecepieController.cs" />
-    <Compile Include="Controllers\RecepieReviewController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
+    <Compile Include="Controllers\RecipeReviewController.cs" />
     <Compile Include="Data\ApplictionDatabase.cs" />
     <Compile Include="DIResolver.cs" />
     <Compile Include="Documents\FileDirectory.cs" />
@@ -290,16 +290,16 @@
     </Compile>
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecepieData\Repository\IRecepieRepository.cs" />
-    <Compile Include="RecepieData\Service\IRecepieService.cs" />
-    <Compile Include="RecepieData\Recepie.cs" />
-    <Compile Include="RecepieData\Repository\RecepieRepository.cs" />
-    <Compile Include="RecepieReviewData\Repository\IRecepieReviewRepository.cs" />
-    <Compile Include="RecepieReviewData\Service\IRecepieReviewService.cs" />
-    <Compile Include="RecepieReviewData\RecepieReview.cs" />
-    <Compile Include="RecepieData\Service\RecepieService.cs" />
-    <Compile Include="RecepieReviewData\Repository\RecepieReviewRepository.cs" />
-    <Compile Include="RecepieReviewData\Service\RecepieReviewService.cs" />
+    <Compile Include="RecipeData\Repository\IRecipeRepository.cs" />
+    <Compile Include="RecipeData\Service\IRecipeService.cs" />
+    <Compile Include="RecipeData\Recipe.cs" />
+    <Compile Include="RecipeData\Repository\RecipeRepository.cs" />
+    <Compile Include="RecipeReviewData\Repository\IRecipeReviewRepository.cs" />
+    <Compile Include="RecipeReviewData\Service\IRecipeReviewService.cs" />
+    <Compile Include="RecipeReviewData\RecipeReview.cs" />
+    <Compile Include="RecipeData\Service\RecipeService.cs" />
+    <Compile Include="RecipeReviewData\Repository\RecipeReviewRepository.cs" />
+    <Compile Include="RecipeReviewData\Service\RecipeReviewService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -356,18 +356,18 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Recepie\Index.cshtml" />
-    <Content Include="Views\Recepie\GetRecepieById.cshtml" />
-    <Content Include="Views\Admin\SelectRecepie.cshtml" />
-    <Content Include="Views\Admin\UpdateRecepie.cshtml" />
-    <Content Include="Views\Admin\AddRecepie.cshtml" />
-    <Content Include="Views\RecepieReview\AddRecepieReview.cshtml" />
+    <Content Include="Views\Recipe\Index.cshtml" />
+    <Content Include="Views\Recipe\GetRecipeById.cshtml" />
+    <Content Include="Views\Admin\SelectRecipe.cshtml" />
+    <Content Include="Views\Admin\UpdateRecipe.cshtml" />
+    <Content Include="Views\Admin\AddRecipe.cshtml" />
+    <Content Include="Views\RecipeReview\AddRecipeReview.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\CreateAccount.cshtml" />
-    <Content Include="Views\RecepieReview\UpdateRecepieReview.cshtml" />
+    <Content Include="Views\RecipeReview\UpdateRecipeReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Recepies\" />
+    <Folder Include="Images\Recipes\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

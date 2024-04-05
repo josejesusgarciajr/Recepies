@@ -1,6 +1,6 @@
 ﻿using PersonalPlayGround.Documents;
-using PersonalPlayGround.RecepieData;
-using PersonalPlayGround.RecepieData.Service;
+using PersonalPlayGround.RecipeData;
+using PersonalPlayGround.RecipeData.Service;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
@@ -11,11 +11,11 @@ namespace PersonalPlayGround.Controllers
     [Authorize]
     public class AdminController : BaseController
     {
-        private readonly IRecepieService _recepieService;
+        private readonly IRecipeService _recipeService;
         public AdminController() { }
-        public AdminController(IRecepieService recepieService)
+        public AdminController(IRecipeService recipeService)
         {
-            _recepieService = recepieService;
+            _recipeService = recipeService;
         }
 
         // GET: Admin
@@ -24,56 +24,56 @@ namespace PersonalPlayGround.Controllers
             return View();
         }
 
-        public ActionResult SelectRecepie(string task)
+        public ActionResult SelectRecipe(string task)
         {
             ViewData["Action"] = task;
-            List<Recepie> recepies = _recepieService.GetRecepies();
+            List<Recipe> recipes = _recipeService.GetRecipes();
 
-            return View(recepies);
+            return View(recipes);
         }
 
-        public ActionResult UpdateRecepie(int recepieId)
+        public ActionResult UpdateRecipe(int recipeId)
         {
-            Recepie recepie = _recepieService.GetRecepieById(recepieId);
+            Recipe recipe = _recipeService.GetRecipeById(recipeId);
 
-            if(string.IsNullOrEmpty(recepie.ImageURL))
+            if(string.IsNullOrEmpty(recipe.ImageURL))
             {
-                recepie.ImageURL = Path.Combine("~", FileDirectory.RecepiesDatabaseFolder, FileDirectory.Image_Needed);
+                recipe.ImageURL = Path.Combine("~", FileDirectory.RecipesDatabaseFolder, FileDirectory.Image_Needed);
             }
 
-            return View(recepie);
+            return View(recipe);
         }
 
-        public ActionResult UpdateRecepieInDatabase(Recepie recepie, HttpPostedFileBase uploadImage)
+        public ActionResult UpdateRecipeInDatabase(Recipe recipe, HttpPostedFileBase uploadImage)
         {
             if(uploadImage  != null)
             {
-                UploadHelper.UploadRecepieImage(uploadImage);
-                recepie.ImageURL = Path.Combine("~", FileDirectory.RecepiesDatabaseFolder, uploadImage.FileName);
+                UploadHelper.UploadRecipeImage(uploadImage);
+                recipe.ImageURL = Path.Combine("~", FileDirectory.RecipesDatabaseFolder, uploadImage.FileName);
             }
 
-            _recepieService.UpdateRecepie(recepie);
+            _recipeService.UpdateRecipe(recipe);
 
-            return RedirectToAction("GetRecepieById", "Recepie", new { recepieId = recepie.Id });
+            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipe.Id });
         }
 
-        public ActionResult AddRecepie()
+        public ActionResult AddRecipe()
         {
             return View();
         }
 
-        public ActionResult AddRecepieToDatabase(Recepie recepie, HttpPostedFileBase uploadImage)
+        public ActionResult AddRecipeToDatabase(Recipe recipe, HttpPostedFileBase uploadImage)
         {
-            int newRecepieId = _recepieService.AddRecepie(recepie, uploadImage);
+            int newRecipeId = _recipeService.AddRecipe(recipe, uploadImage);
 
-            return RedirectToAction("GetRecepieById", "Recepie", new { recepieId = newRecepieId });
+            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = newRecipeId });
         }
 
-        public ActionResult DeleteRecepie(int recepieId)
+        public ActionResult DeleteRecipe(int recipeId)
         {
-            _recepieService.DeleteRecepie(recepieId);
+            _recipeService.DeleteRecipe(recipeId);
 
-            return RedirectToAction("SelectRecepie", new { task = "Delete" });
+            return RedirectToAction("SelectRecipe", new { task = "Delete" });
         }
     }
 }

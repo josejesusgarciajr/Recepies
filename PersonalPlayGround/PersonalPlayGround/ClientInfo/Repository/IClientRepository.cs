@@ -1,4 +1,4 @@
-﻿using PersonalPlayGround.RecepieReviewData;
+﻿using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 
 namespace PersonalPlayGround.ClientInfo.Repository
@@ -10,6 +10,6 @@ namespace PersonalPlayGround.ClientInfo.Repository
         Client GetClientByCredentials(string username, string password);
         Client GetClientByUsername(string username);
         void AddClient(Client client);
-        RecepieReview ClientReview(int clientId, int recepieId);
+        RecipeReview ClientReview(int clientId, int recipeId);
     }
 }

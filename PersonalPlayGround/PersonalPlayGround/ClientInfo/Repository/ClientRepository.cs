@@ -1,5 +1,5 @@
 ﻿using PersonalPlayGround.Data;
-using PersonalPlayGround.RecepieReviewData;
+using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -41,12 +41,12 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _database.SaveChanges();
         }
 
-        public RecepieReview ClientReview(int clientId, int recepieId)
+        public RecipeReview ClientReview(int clientId, int recipeId)
         {
-            return _database.RecepieReviews
+            return _database.RecipeReviews
                     .Where
                     (
-                        rr => rr.RecepieId == recepieId 
+                        rr => rr.RecipeId == recipeId 
                         && rr.ClientId == clientId
                     ).FirstOrDefault();
         }

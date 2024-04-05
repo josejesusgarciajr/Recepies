@@ -1,13 +1,13 @@
-﻿@model PersonalPlayGround.RecepieReviewData.RecepieReview
+﻿@model PersonalPlayGround.RecipeReviewData.RecipeReview
 @{
-    ViewBag.Title = "AddRecepieReview";
-    PersonalPlayGround.RecepieData.Recepie recepie = ViewBag.Recepie as PersonalPlayGround.RecepieData.Recepie;
+    ViewBag.Title = "AddRecipeReview";
+    PersonalPlayGround.RecipeData.Recipe recipe = ViewBag.Recipe as PersonalPlayGround.RecipeData.Recipe;
 }
 
 <style>
         /* Set background image dynamically */
     body {
-        background-image: url('@Url.Content(recepie.ImageURL)');
+        background-image: url('@Url.Content(recipe.ImageURL)');
         background-size: cover; /* Adjust to cover entire background */
         /* Add more background properties as needed */
     }
@@ -19,24 +19,24 @@
 
 </style>
 
-<h2 class="display-4 text-center">Add Recepie Review</h2>
+<h2 class="display-4 text-center">Add Recipe Review</h2>
 
 <div class="row">
 
     <div class="col lead d-flex justify-content-center">
         <p>
-            Leave your review for @recepie.Name! Let us know what you like, what you don't like, 
+            Leave your review for @recipe.Name! Let us know what you like, what you don't like, 
             whether you come back again or anything else that is on your mind.
         </p>
     </div>
 
     <div class="col lead d-flex justify-content-center">
-        <img src="@Url.Content(recepie.ImageURL)" width="300px;" height="140px;" />
+        <img src="@Url.Content(recipe.ImageURL)" width="300px;" height="140px;" />
     </div>
 
-    <form action="@Url.Action("AddRecepieReviewToDatabase", "RecepieReview")" method="post">
+    <form action="@Url.Action("AddRecipeReviewToDatabase", "RecipeReview")" method="post">
 
-        @Html.Hidden("RecepieId", recepie.Id);
+        @Html.Hidden("RecipeId", recipe.Id);
 
         <div class="form-group col d-flex justify-content-center">
             @Html.TextArea("Review", null, new { @class = "form-control", @id = "reviewDescription", @rows = "12", placeholder = "Let us know what you think!" })

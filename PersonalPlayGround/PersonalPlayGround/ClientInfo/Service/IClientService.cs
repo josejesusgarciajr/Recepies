@@ -9,6 +9,6 @@ namespace PersonalPlayGround.ClientInfo.Repository
         bool AuthorizeClient(string username, string password);
         Client GetClientByUsername(string username);
         bool AddClient(Client client);
-        bool ClientLeftReview(int clientId, int recepieId);
+        bool ClientLeftReview(int clientId, int recipeId);
     }
 }

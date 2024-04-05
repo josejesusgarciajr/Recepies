@@ -1,26 +1,23 @@
-﻿@model PersonalPlayGround.RecepieData.Recepie
+﻿@model PersonalPlayGround.RecipeData.Recipe
 
-@{
-    ViewBag.Title = "AddRecepie";
-}
-
-<h2 class="display-4 text-center">Add Recepie</h2>
+<h2 class="display-4 text-center">Update Recipe</h2>
 
 <div class="row">
 
     <div class="col-3">
+        <form action="@Url.Action("UpdateRecipeInDatabase", "Admin")" method="post" enctype="multipart/form-data">
 
-        <form action="@Url.Action("AddRecepieToDatabase", "Admin")" method="post" enctype="multipart/form-data">
+            @Html.Hidden("Id", Model.Id)
 
             <div class="form-group">
-                <label for="recepieName">Recepie Name:</label>
-                @Html.TextBox("Name", null, new { @class = "form-control", @id = "recepieName", @style = "width: 100%;", placeholder = "Agua De Melon" })
+                <label for="recipeName">Recipe Name:</label>
+                @Html.TextBox("Name", Model.Name, new { @class = "form-control", @id = "recipeName", @style = "width: 100%;", placeholder = "Update Recipe Name" })
             </div>
 
             <br />
             <div class="form-group">
-                <label for="recepieDescription">Recepie Description:</label>
-                @Html.TextArea("Description", null, new { @class = "form-control", @id = "recepieDescription", @rows = "12", placeholder = "The best water is agua fresca!" })
+                <label for="recipeDescription">Recipe Description:</label>
+                @Html.TextArea("Description", Model.Description, new { @class = "form-control", @id = "recipeDescription", @rows = "12" })
             </div>
 
             <br />
@@ -31,39 +28,39 @@
 
             <br />
             <div class="form-check form-check-inline">
-                @Html.CheckBox("Active", true, new { @class = "form-check-input", id = "inlineCheckbox1", @checked = "checked" })
+                @Html.CheckBox("Active", Model.Active, new { @class = "form-check-input", id = "inlineCheckbox1", @checked = "checked" })
                 <label class="form-check-label" for="inlineCheckbox1">Active</label>
             </div>
+
+            @Html.Hidden("ImageURL", Model.ImageURL)
 
             <br /><br />
             <button type="submit" class="btn btn-outline-primary">Submit</button>
 
         </form>
-
     </div>
 
-    <div class="col-9" id="imagePreview"></div>
+    <div class="col-9" id="imagePreview">
+        <img src="@Url.Content(Model.ImageURL)" width="100%;" height="560px;" />
+    </div>
 
 </div>
 
-<!-- Container to render React app -->
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 <script src="@Url.Content("~/Scripts/React-Components/ImagePreview.jsx")"></script>
 
 <script>
-    // Function to render the React component for image preview
     function renderImagePreview(file) {
-        // Render your React component in the specified container
         ReactDOM.render(
             React.createElement(ImagePreview, { selectedFile: file }), document.getElementById('imagePreview')
         );
     }
 
-    // Handle file change event for the input element
     document.getElementById('uploadImageId').addEventListener('change', function () {
+        console.log('file selected');
         const file = this.files[0];
-        renderImagePreview(file);
+        renderImagePreview(file)
     });
 </script>

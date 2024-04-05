@@ -1,10 +1,10 @@
-﻿using PersonalPlayGround.RecepieReviewData;
+﻿using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PersonalPlayGround.RecepieData
+namespace PersonalPlayGround.RecipeData
 {
-    public class Recepie
+    public class Recipe
     {
         [Key]
         public int Id { get; set; }
@@ -12,7 +12,7 @@ namespace PersonalPlayGround.RecepieData
         public string Description { get; set; }
         public string ImageURL { get; set; }
         public List<string> Ingridients { get; set; }
-        public List<RecepieReview> Ratings { get; set; }
+        public List<RecipeReview> Ratings { get; set; }
         public bool Active { get; set; } = true;
     }
 }

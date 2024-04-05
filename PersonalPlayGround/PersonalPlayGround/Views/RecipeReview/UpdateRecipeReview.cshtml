@@ -1,26 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "UpdateRecepieReview";
-    PersonalPlayGround.RecepieReviewData.RecepieReview recepieReview = Model;
-    PersonalPlayGround.RecepieData.Recepie recepie = ViewBag.Recepie;
+    ViewBag.Title = "UpdateRecipeReview";
+    PersonalPlayGround.RecipeReviewData.RecipeReview recipeReview = Model;
+    PersonalPlayGround.RecipeData.Recipe recipe = ViewBag.Recipe;
 }
 
-<h2 class="display-4 text-center">Update Recepie Review</h2>
+<h2 class="display-4 text-center">Update Recipe Review</h2>
 
 
-<form action="@Url.Action("UpdateRecepieReviewInDatabase", "RecepieReview")" method="post">
+<form action="@Url.Action("UpdateRecipeReviewInDatabase", "RecipeReview")" method="post">
 
     <div class="row">
 
         <div class="col-8">
-            <img src="@Url.Content(recepie.ImageURL)" width="800px;" />
+            <img src="@Url.Content(recipe.ImageURL)" width="800px;" />
         </div>
 
         <div class="col-4 container">
 
-            @Html.Hidden("RecepieReviewId", recepieReview.RecepieReviewId)
-            @Html.Hidden("RecepieId", recepie.Id)
-            @Html.Hidden("ClientId", recepieReview.ClientId)
+            @Html.Hidden("RecipeReviewId", recipeReview.RecipeReviewId)
+            @Html.Hidden("RecipeId", recipe.Id)
+            @Html.Hidden("ClientId", recipeReview.ClientId)
 
             <div class="form-group col d-flex justify-content-center">
                 @Html.TextArea("Review", null, new { @class = "form-control", @id = "reviewDescription", @rows = "12", placeholder = "Let us know what you think!" })
@@ -29,7 +29,7 @@
             <br />
             <div class="form-group">
                 <span for="ratingRangeInputId" class="form-label">Rating:</span>
-                <input type="range" class="form-range" min="0" max="100" step="1" id="ratingRangeInputId" name="Rating" value="@recepieReview.Rating">
+                <input type="range" class="form-range" min="0" max="100" step="1" id="ratingRangeInputId" name="Rating" value="@recipeReview.Rating">
                 <div id="ratingRangeNumber" class="text-center"></div>
             </div>
 

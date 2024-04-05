@@ -2,17 +2,17 @@
 using System.ComponentModel.DataAnnotations;
 using PersonalPlayGround.ClientInfo;
 
-namespace PersonalPlayGround.RecepieReviewData
+namespace PersonalPlayGround.RecipeReviewData
 {
-    public class RecepieReview
+    public class RecipeReview
     {
         [Key]
-        public int RecepieReviewId { get; set; }
+        public int RecipeReviewId { get; set; }
         public Client Client { get; set; }
         public int ClientId { get; set; }
         public double Rating { get; set; }
         public string Review { get; set; }
         public DateTime ReviewDate { get; set; }
-        public int RecepieId { get; set; }
+        public int RecipeId { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿@model PersonalPlayGround.RecepieData.Recepie
+﻿@model PersonalPlayGround.RecipeData.Recipe
 
 @{
-    ViewBag.Title = "GetRecepieById";
+    ViewBag.Title = "GetRecipeById";
 
-    PersonalPlayGround.RecepieData.Recepie recepie = Model;
+    PersonalPlayGround.RecipeData.Recipe recipe = Model;
 }
 
 
@@ -23,14 +23,14 @@
     <div class="container">
         <h2 class="display-2 text-center">Reviews</h2>
 
-        @if(recepie.Ratings.Count > 0)
+        @if(recipe.Ratings.Count > 0)
         {
             <div>
-                <h6 class="display-6">Average Rating: @recepie.Ratings.Average(r => r.Rating)</h6>
+                <h6 class="display-6">Average Rating: @recipe.Ratings.Average(r => r.Rating)</h6>
             </div>
         }
 
-        @foreach(PersonalPlayGround.RecepieReviewData.RecepieReview review in recepie.Ratings)
+        @foreach(PersonalPlayGround.RecipeReviewData.RecipeReview review in recipe.Ratings)
         {
 
             <div class="card text-center">
@@ -45,7 +45,7 @@
 
                     @if (review.Client.UserName == User.Identity.Name)
                     {
-                        <a href="@Url.Action("UpdateRecepieReview", "RecepieReview", new { recepieReviewId = review.RecepieReviewId })" class="btn btn-outline-dark">Edit Review</a>
+                        <a href="@Url.Action("UpdateRecipeReview", "RecipeReview", new { recipeReviewId = review.RecipeReviewId })" class="btn btn-outline-dark">Edit Review</a>
                     }
                 </div>
 
@@ -61,7 +61,7 @@
     @if (!ViewBag.ClientLeftReview)
     {
         <div class="container">
-            <a class="btn btn-outline-success" href="@Url.Action("AddRecepieReview", "RecepieReview", new { recepieId = Model.Id})">Add Review</a>
+            <a class="btn btn-outline-success" href="@Url.Action("AddRecipeReview", "RecipeReview", new { recipeId = Model.Id})">Add Review</a>
         </div>
     }
 </body>
