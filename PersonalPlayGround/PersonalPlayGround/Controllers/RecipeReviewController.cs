@@ -34,11 +34,6 @@ namespace PersonalPlayGround.Controllers
                 return RedirectToAction("Index", "Recipe");
             }
 
-            if (string.IsNullOrEmpty(recipe.ImageURL))
-            {
-                recipe.ImageURL = FileDirectory.Image_Needed;
-            }
-
             ViewBag.Recipe = recipe;
             return View();
         }

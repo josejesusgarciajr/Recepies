@@ -56,11 +56,6 @@ namespace PersonalPlayGround.Controllers
                 return RedirectToAction("Index", "Recipe");
             }
 
-            if(string.IsNullOrEmpty(recipe.ImageURL))
-            {
-                recipe.ImageURL = Path.Combine("~", FileDirectory.RecipesDatabaseFolder, FileDirectory.Image_Needed);
-            }
-
             // Get Recipe Rating/Review
             recipe.Ratings = _recipeReviewService.GetRecipeReviewsByRecipeId(recipeId.Value);
 

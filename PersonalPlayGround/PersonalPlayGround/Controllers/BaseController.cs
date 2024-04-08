@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
-using PersonalPlayGround.ClientInfo;
+﻿using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
 using System.Web.Caching;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using System;
 
 namespace PersonalPlayGround.Controllers
