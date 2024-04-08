@@ -298,6 +298,7 @@
     <Compile Include="Controllers\RecipeReviewController.cs" />
     <Compile Include="Data\ApplictionDatabase.cs" />
     <Compile Include="DIResolver.cs" />
+    <Compile Include="Documents\AdminAuthorize.cs" />
     <Compile Include="Documents\FileDirectory.cs" />
     <Compile Include="Documents\UploadHelper.cs" />
     <Compile Include="Global.asax.cs">

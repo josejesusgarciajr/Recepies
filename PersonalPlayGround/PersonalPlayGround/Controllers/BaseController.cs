@@ -1,6 +1,8 @@
-﻿using PersonalPlayGround.ClientInfo;
+﻿using Microsoft.AspNetCore.Identity;
+using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace PersonalPlayGround.Controllers
 {

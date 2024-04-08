@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace PersonalPlayGround.Controllers
 {
+    [AdminAuthorize]
     [Authorize]
     public class AdminController : BaseController
     {
