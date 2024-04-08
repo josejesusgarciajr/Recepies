@@ -46,7 +46,7 @@ namespace PersonalPlayGround.Controllers
 
         public ActionResult UpdateRecipeInDatabase(Recipe recipe, HttpPostedFileBase uploadImage)
         {
-            if(uploadImage  != null)
+            if (uploadImage  != null)
             {
                 UploadHelper.UploadRecipeImage(uploadImage);
                 recipe.ImageURL = Path.Combine("~", FileDirectory.RecipesDatabaseFolder, uploadImage.FileName);
