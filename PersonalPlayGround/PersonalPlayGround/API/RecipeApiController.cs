@@ -9,11 +9,7 @@ namespace PersonalPlayGround.API
     public class RecipeApiController : ApiController
     {
         private readonly IRecipeService _recipeService;
-        public RecipeApiController()
-        {
 
-            _recipeService = System.Web.Mvc.DependencyResolverExtensions.GetService<IRecipeService>(System.Web.Mvc.DependencyResolver.Current);
-        }
         public RecipeApiController(IRecipeService recipeService)
         {
             _recipeService = recipeService;
@@ -26,9 +22,9 @@ namespace PersonalPlayGround.API
             return _recipeService.GetRecipes();
         }
 
-        //// GET: api/recipeapis/get-recipe-by-id/{recipeId}
-        [HttpGet, Route("get-recipe-by-id")]
-        public Recipe GetRecipeById([FromBody] int recipeId)
+        // GET: api/recipeapis/get-recipe-by-id/{recipeId}
+        [HttpGet, Route("get-recipe-by-id/{recipeId}")]
+        public Recipe GetRecipeById(int recipeId)
         {
             return _recipeService.GetRecipeById(recipeId);
         }
