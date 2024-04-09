@@ -12,6 +12,8 @@ namespace PersonalPlayGround
             AreaRegistration.RegisterAllAreas();
 
             // Register Web API routes
+            GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
+
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
@@ -23,6 +25,8 @@ namespace PersonalPlayGround
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ReactConfig.Configure();
+
+            GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }
 }

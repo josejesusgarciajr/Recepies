@@ -1,19 +1,18 @@
 ﻿using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
-using Swashbuckle.Swagger.Annotations;
 using System.Collections.Generic;
-//using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace PersonalPlayGround.API
 {
     [RoutePrefix("api/recipeapis")]
-    public class RecipeApiController : System.Web.Http.ApiController
+    public class RecipeApiController : ApiController
     {
         private readonly IRecipeService _recipeService;
         public RecipeApiController()
         {
-            _recipeService = DependencyResolver.Current.GetService<IRecipeService>();
+
+            _recipeService = System.Web.Mvc.DependencyResolverExtensions.GetService<IRecipeService>(System.Web.Mvc.DependencyResolver.Current);
         }
         public RecipeApiController(IRecipeService recipeService)
         {
@@ -22,17 +21,16 @@ namespace PersonalPlayGround.API
 
         // GET: api/recipeapis/get-recipes
         [HttpGet, Route("get-all")]
-        [SwaggerOperation("GetRecipes")]
         public List<Recipe> GetRecipes()
         {
             return _recipeService.GetRecipes();
         }
 
         //// GET: api/recipeapis/get-recipe-by-id/{recipeId}
-        //[System.Web.Http.HttpGet, Route("get-recipe-by-id")]
-        //public Recipe GetRecipeById(int recipeId)
-        //{
-        //    return _recipeService.GetRecipeById(recipeId);
-        //}
+        [HttpGet, Route("get-recipe-by-id")]
+        public Recipe GetRecipeById([FromBody] int recipeId)
+        {
+            return _recipeService.GetRecipeById(recipeId);
+        }
     }
 }
