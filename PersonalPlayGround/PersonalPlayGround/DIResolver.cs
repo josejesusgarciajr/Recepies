@@ -1,14 +1,12 @@
-﻿using PersonalPlayGround.ClientInfo;
-using PersonalPlayGround.ClientInfo.Repository;
+﻿using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Repository;
 using PersonalPlayGround.RecipeData.Service;
-using PersonalPlayGround.RecipeReviewData;
 using PersonalPlayGround.RecipeReviewData.Repository;
 using PersonalPlayGround.RecipeReviewData.Service;
+using System.Web.Http;
 using System.Web.Mvc;
 using Unity;
-using Unity.AspNet.Mvc;
 
 namespace PersonalPlayGround
 {
@@ -33,7 +31,8 @@ namespace PersonalPlayGround
             container.RegisterType<IClientService,  ClientService>();
 
             // set resolver for MVC Controllers
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            DependencyResolver.SetResolver(new Unity.AspNet.Mvc.UnityDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.AspNet.WebApi.UnityDependencyResolver(container);
         }
     }
 }
