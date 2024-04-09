@@ -5,10 +5,10 @@ namespace PersonalPlayGround.ClientInfo.Repository
     public interface IClientService
     {
         List<Client> GetAllClients();
-        Client GetClientById(int clientId);
-        bool AuthorizeClient(string username, string password);
+        Client GetClientById(string clientId);
+        bool AuthorizeClient(string username, string hashedPassword);
         Client GetClientByUsername(string username);
         bool AddClient(Client client);
-        bool ClientLeftReview(int clientId, int recipeId);
+        bool ClientLeftReview(string clientId, int recipeId);
     }
 }

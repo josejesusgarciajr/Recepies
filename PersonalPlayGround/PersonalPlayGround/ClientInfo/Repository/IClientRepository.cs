@@ -6,10 +6,9 @@ namespace PersonalPlayGround.ClientInfo.Repository
     public interface IClientRepository
     {
         List<Client> GetAllClients();
-        Client GetClientById(int clientId);
-        Client GetClientByCredentials(string username, string password);
+        Client GetClientById(string clientId);
         Client GetClientByUsername(string username);
         void AddClient(Client client);
-        RecipeReview ClientReview(int clientId, int recipeId);
+        RecipeReview ClientReview(string clientId, int recipeId);
     }
 }

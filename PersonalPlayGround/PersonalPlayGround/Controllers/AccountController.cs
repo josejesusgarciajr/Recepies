@@ -1,5 +1,8 @@
-﻿using PersonalPlayGround.ClientInfo;
+﻿using Microsoft.AspNet.Identity;
+using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
+using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -44,13 +47,25 @@ namespace PersonalPlayGround.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult CreateAccount()
+        public ActionResult CreateAccount(string message = "")
         {
+            ViewBag.ErrorMessage = message;
             return View();
         }
 
-        public ActionResult AddAccount(Client client)
+        public ActionResult AddAccount(string name, string username, string password)
         {
+            Tuple<IdentityResult, Client> data = AspNetIdentityUser.CreateClientUser(name, username, password);
+
+            IdentityResult identityResult = data.Item1;
+            Client client = data.Item2 as Client;
+
+            if(!identityResult.Succeeded)
+            {
+                string message = identityResult.Errors.FirstOrDefault();
+                return RedirectToAction("CreateAccount", "Account", new { message = message });
+            }
+
             bool addedClient = _clientService.AddClient(client);
 
             if(!addedClient)

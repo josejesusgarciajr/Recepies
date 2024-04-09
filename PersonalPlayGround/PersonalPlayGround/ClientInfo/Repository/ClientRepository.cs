@@ -15,17 +15,12 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _database = database;
         }
 
-        public Client GetClientByCredentials(string username, string password)
-        {
-            return _database.Clients.Where(client => client.UserName == username && client.Password == password).FirstOrDefault();
-        }
-
         public List<Client> GetAllClients()
         {
             return _database.Clients.ToList();
         }
 
-        public Client GetClientById(int clientId)
+        public Client GetClientById(string clientId)
         {
             return _database.Clients.Find(clientId);
         }
@@ -41,7 +36,7 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _database.SaveChanges();
         }
 
-        public RecipeReview ClientReview(int clientId, int recipeId)
+        public RecipeReview ClientReview(string clientId, int recipeId)
         {
             return _database.RecipeReviews
                     .Where

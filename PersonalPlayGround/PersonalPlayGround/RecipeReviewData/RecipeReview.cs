@@ -9,7 +9,7 @@ namespace PersonalPlayGround.RecipeReviewData
         [Key]
         public int RecipeReviewId { get; set; }
         public Client Client { get; set; }
-        public int ClientId { get; set; }
+        public string ClientId { get; set; }
         public double Rating { get; set; }
         public string Review { get; set; }
         public DateTime ReviewDate { get; set; }

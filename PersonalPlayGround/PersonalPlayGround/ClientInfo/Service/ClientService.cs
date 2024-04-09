@@ -1,4 +1,6 @@
-﻿using PersonalPlayGround.RecipeReviewData;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 
 namespace PersonalPlayGround.ClientInfo.Repository
@@ -27,22 +29,26 @@ namespace PersonalPlayGround.ClientInfo.Repository
 
         public bool AuthorizeClient(string username, string password)
         {
-            Client client = _clientRepository.GetClientByCredentials(username, password);
-            
-            if(client is null)
-            {
-                return false;
-            }
+            var userStore = new UserStore<IdentityUser>();
+            var userManager = new UserManager<IdentityUser>(userStore);
 
-            if(client.UserName.Equals(username) && client.Password.Equals(password)) 
+            // Find the user by username
+            var user = userManager.FindByName(username);
+
+            // Check if the user exists and the provided password is correct
+            if (user != null && userManager.CheckPassword(user, password))
             {
+                // User is authenticated, you can proceed with login
                 return true;
             }
-
-            return false;
+            else
+            {
+                // Invalid username or password
+                return false;
+            }
         }
 
-        public bool ClientLeftReview(int clientId, int recipeId)
+        public bool ClientLeftReview(string clientId, int recipeId)
         {
             RecipeReview recipeReview = _clientRepository.ClientReview(clientId, recipeId);
 
@@ -59,7 +65,7 @@ namespace PersonalPlayGround.ClientInfo.Repository
             return _clientRepository.GetAllClients();
         }
 
-        public Client GetClientById(int clientId)
+        public Client GetClientById(string clientId)
         {
             return _clientRepository.GetClientById(clientId);
         }
