@@ -7,7 +7,7 @@ namespace PersonalPlayGround.App_Start
         public static void Register(HttpConfiguration config)
         {
             // WEB API Routes
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
