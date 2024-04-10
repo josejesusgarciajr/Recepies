@@ -16,20 +16,20 @@ In the Recipe Web Application you are able to:
      - Login with Account
 
   3. Recepie
-    A. View all Recipes (That are Active)
-    B. View an individual Recipe (View Active only)
+     - View all Recipes (That are Active)
+     - View an individual Recipe (View Active only)
 
-  4. Recepie Reviews (You can only Edit/Update your own Recipe Review)
-    A. Add Recipe Review
-    B. Edit/Update Recepie Review
+  5. Recepie Reviews (You can only Edit/Update your own Recipe Review)
+     - Add Recipe Review
+     - Edit/Update Recepie Review
 
-  5. Admin Page (For Admin Users Only)
-    A. Admin Tab is visible
-    B. Add Recipe
-    C. Edit/Update Recipe
-    D. Delete Recipe
+  7. Admin Page (For Admin Users Only)
+     - Admin Tab is visible
+     - Add Recipe
+     - Edit/Update Recipe
+     - Delete Recipe
 
-  6. Access the API (Using Swagger)
+  9. Access the API (Using Swagger)
 
 Always welcome to chat for a job opportunity: 
 
