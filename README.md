@@ -16,14 +16,14 @@ In the Recipe Web Application you are able to:
      - Login with Account
 
   3. Recepie
-     - View all Recipes (That are Active)
-     - View an individual Recipe (View Active only)
+     - View all Recipes (Active Only)
+     - View an individual Recipe (Active Only)
 
   5. Recepie Reviews (You can only Edit/Update your own Recipe Review)
      - Add Recipe Review
      - Edit/Update Recepie Review
 
-  7. Admin Page (For Admin Users Only)
+  7. Admin Page (For Admin Users Only) (View all Recipes)
      - Admin Tab is visible
      - Add Recipe
      - Edit/Update Recipe
