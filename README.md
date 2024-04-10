@@ -23,7 +23,7 @@ In the Recipe Web Application you are able to:
      - Add Recipe Review
      - Edit/Update Recepie Review
 
-  7. Admin Page (For Admin Users Only) (View all Recipes)
+  7. Admin Page (For Admin Users Only)
      - Admin Tab is visible
      - Add Recipe
      - Edit/Update Recipe
