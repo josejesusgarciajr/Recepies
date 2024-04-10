@@ -12,24 +12,24 @@ This Project is build using
 In the Recipe Web Application you are able to:
 
   1. Account Management (Using Identity Framework)
-    A. Create an Account
-    B. Login with Account
+     - Create an Account
+     - Login with Account
 
-  2. Recepie
+  3. Recepie
     A. View all Recipes (That are Active)
     B. View an individual Recipe (View Active only)
 
-  3. Recepie Reviews (You can only Edit/Update your own Recipe Review)
+  4. Recepie Reviews (You can only Edit/Update your own Recipe Review)
     A. Add Recipe Review
     B. Edit/Update Recepie Review
 
-  4. Admin Page (For Admin Users Only)
+  5. Admin Page (For Admin Users Only)
     A. Admin Tab is visible
     B. Add Recipe
     C. Edit/Update Recipe
     D. Delete Recipe
 
-  5. Access the API (Using Swagger)
+  6. Access the API (Using Swagger)
 
 Always welcome to chat for a job opportunity: 
 
