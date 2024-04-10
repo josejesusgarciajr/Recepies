@@ -1,5 +1,4 @@
-﻿using PersonalPlayGround.Documents;
-using PersonalPlayGround.RecipeData;
+﻿using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
 using PersonalPlayGround.RecipeReviewData;
 using PersonalPlayGround.RecipeReviewData.Service;
@@ -8,7 +7,7 @@ using System.Web.Mvc;
 
 namespace PersonalPlayGround.Controllers
 {
-    public class RecipeReviewController : Controller
+    public class RecipeReviewController : BaseController
     {
         private readonly IRecipeService _recipeService;
         private readonly IRecipeReviewService _recipeReviewService;
