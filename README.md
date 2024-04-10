@@ -33,6 +33,6 @@ In the Recipe Web Application you are able to:
 
 Always welcome to chat for a job opportunity: 
 
-  Phone Number: (562) 966-3459 \n
+  Phone Number: (562) 966-3459 <br/>
   Email: josejesusgarciajr@gmial.com
      
