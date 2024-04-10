@@ -14,38 +14,21 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _clientRepository = clientRepository;
         }
 
-        public bool AddClient(Client client)
+        public void AddClient(Client client)
         {
             Client existingClient = GetClientByUsername(client.UserName);
 
             if (existingClient != null)
             {
-                return false;
+                return;
             }
 
             _clientRepository.AddClient(client);
-            return true;
         }
 
         public bool AuthorizeClient(string username, string password)
         {
-            var userStore = new UserStore<IdentityUser>();
-            var userManager = new UserManager<IdentityUser>(userStore);
-
-            // Find the user by username
-            var user = userManager.FindByName(username);
-
-            // Check if the user exists and the provided password is correct
-            if (user != null && userManager.CheckPassword(user, password))
-            {
-                // User is authenticated, you can proceed with login
-                return true;
-            }
-            else
-            {
-                // Invalid username or password
-                return false;
-            }
+            return AspNetIdentityUser.AuthorizeAspNetUser(username, password);
         }
 
         public bool ClientLeftReview(string clientId, int recipeId)

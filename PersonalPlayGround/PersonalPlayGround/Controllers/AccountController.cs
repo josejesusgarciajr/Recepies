@@ -28,7 +28,6 @@ namespace PersonalPlayGround.Controllers
         {
             bool authorizedClient = _clientService.AuthorizeClient(username, password);
 
-            // Validate username and password here (e.g., against a database)
             if (authorizedClient)
             {
                 FormsAuthentication.SetAuthCookie(username, false);
@@ -58,22 +57,19 @@ namespace PersonalPlayGround.Controllers
             Tuple<IdentityResult, Client> data = AspNetIdentityUser.CreateClientUser(name, username, password);
 
             IdentityResult identityResult = data.Item1;
-            Client client = data.Item2 as Client;
+            Client client = data.Item2;
 
+            // redirect back with error message
             if(!identityResult.Succeeded)
             {
                 string message = identityResult.Errors.FirstOrDefault();
                 return RedirectToAction("CreateAccount", "Account", new { message = message });
             }
 
-            bool addedClient = _clientService.AddClient(client);
+            // add client to database
+            _clientService.AddClient(client);
 
-            if(!addedClient)
-            {
-                string message = $"Client {client.UserName} already exists. Please Log In";
-                return RedirectToAction("Login", "Account", new { message = message });
-            }
-
+            // redirect client back to login 
             return RedirectToAction("LogIn");
         }
     }

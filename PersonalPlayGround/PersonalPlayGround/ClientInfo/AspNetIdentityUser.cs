@@ -38,5 +38,26 @@ namespace PersonalPlayGround.ClientInfo
                 manager.DeleteAsync(existingUser);
             }
         }
+
+        public static bool AuthorizeAspNetUser(string username, string password)
+        {
+            var userStore = new UserStore<IdentityUser>();
+            var userManager = new UserManager<IdentityUser>(userStore);
+
+            // Find the user by username
+            var user = userManager.FindByName(username);
+
+            // Check if the user exists and the provided password is correct
+            if (user != null && userManager.CheckPassword(user, password))
+            {
+                // User is authenticated, you can proceed with login
+                return true;
+            }
+            else
+            {
+                // Invalid username or password
+                return false;
+            }
+        }
     }
 }

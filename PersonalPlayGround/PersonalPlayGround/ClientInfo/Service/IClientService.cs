@@ -8,7 +8,7 @@ namespace PersonalPlayGround.ClientInfo.Repository
         Client GetClientById(string clientId);
         bool AuthorizeClient(string username, string hashedPassword);
         Client GetClientByUsername(string username);
-        bool AddClient(Client client);
+        void AddClient(Client client);
         bool ClientLeftReview(string clientId, int recipeId);
     }
 }
