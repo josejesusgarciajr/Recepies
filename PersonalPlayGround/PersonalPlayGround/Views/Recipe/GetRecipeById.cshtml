@@ -7,6 +7,15 @@
 }
 
 
+@if(ViewBag.ShowConfetti)
+{
+    <head>
+        <link id="confettiStylesheet" rel="stylesheet" type="text/css" href="~/Content/Confetti/Confetti.css" />
+    </head>
+
+    <div id="removeBackground"></div>
+}
+
 <body>
     <div class="container">
         <h2 class="display-4 text-center">@Model.Name</h2>
@@ -23,14 +32,14 @@
     <div class="container">
         <h2 class="display-2 text-center">Reviews</h2>
 
-        @if(recipe.Ratings.Count > 0)
+        @if (recipe.Ratings.Count > 0)
         {
             <div>
                 <h6 class="display-6">Average Rating: @Math.Round(recipe.Ratings.Average(r => r.Rating))</h6>
             </div>
         }
 
-        @foreach(PersonalPlayGround.RecipeReviewData.RecipeReview review in recipe.Ratings)
+        @foreach (PersonalPlayGround.RecipeReviewData.RecipeReview review in recipe.Ratings)
         {
 
             <div class="card text-center">
@@ -65,4 +74,19 @@
         </div>
     }
 </body>
+
+@if(ViewBag.ShowConfetti)
+{
+    <!-- Container to render React app -->
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+    <script src="@Url.Content("~/Scripts/React-Components/Confetti.jsx")"></script>
+
+    <script>
+        ReactDOM.render(
+            React.createElement(Confetti, {}), document.getElementById('removeBackground')
+        );
+    </script>
+}
 

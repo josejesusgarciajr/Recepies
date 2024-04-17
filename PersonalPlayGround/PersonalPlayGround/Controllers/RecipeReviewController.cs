@@ -42,7 +42,7 @@ namespace PersonalPlayGround.Controllers
             string clientUsername = User.Identity.Name;
             _recipeReviewService.AddRecipeReview(recipeReview, clientUsername);
 
-            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId });
+            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId, fromPage = "AddRecipeReview" });
         }
 
         public ActionResult UpdateRecipeReview(int recipeReviewId)
@@ -59,7 +59,7 @@ namespace PersonalPlayGround.Controllers
             recipeReview.ReviewDate = DateTime.UtcNow;
             _recipeReviewService.UpdateRecipeReview(recipeReview);
 
-            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId });
+            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId, fromPage = "UpdateRecipeReview" });
         }
     }
 }

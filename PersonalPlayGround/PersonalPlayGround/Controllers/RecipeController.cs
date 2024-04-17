@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Web.Mvc;
 using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
-using PersonalPlayGround.Documents;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
 using PersonalPlayGround.RecipeReviewData;
@@ -34,7 +32,7 @@ namespace PersonalPlayGround.Controllers
         }
 
         // GET: Recipe/Id
-        public ActionResult GetRecipeById(int? recipeId)
+        public ActionResult GetRecipeById(int? recipeId, string fromPage = "")
         {
             if (recipeId == null)
             {
@@ -69,7 +67,16 @@ namespace PersonalPlayGround.Controllers
             Client client = _clientService.GetClientByUsername(User.Identity.Name);
             bool clientLeftReview = _clientService.ClientLeftReview(client.Id, recipeId.Value);
 
+            // Confett logic
+            bool showConfetti = false;
+            if(fromPage.Equals("AddRecipeReview") || fromPage.Equals("UpdateRecipeReview"))
+            {
+                showConfetti = true;
+            }
+
+            ViewBag.ShowConfetti = showConfetti;
             ViewBag.ClientLeftReview = clientLeftReview;
+
             return View(recipe);
         }
 

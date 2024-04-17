@@ -1,0 +1,5 @@
+﻿body {
+    background-size: cover;
+    backdrop-filter: blur(2px);
+    background-image: url('../../Images/confetti.gif');
+}

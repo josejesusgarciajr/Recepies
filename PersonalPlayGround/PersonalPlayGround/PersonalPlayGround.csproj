@@ -310,6 +310,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Cart\ShoppingCart.cs" />
     <Compile Include="ClientInfo\AspNetIdentityUser.cs" />
     <Compile Include="ClientInfo\Client.cs" />
     <Compile Include="ClientInfo\Repository\ClientRepository.cs" />
@@ -360,6 +361,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Confetti\Confetti.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -380,6 +382,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\React-Components\Confetti.jsx" />
     <Content Include="Scripts\React-Components\ImagePreview.jsx" />
     <Content Include="Scripts\React-Components\RangeNumber.jsx" />
     <Content Include="Scripts\React-Components\Tutorial.jsx" />
