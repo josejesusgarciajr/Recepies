@@ -17,7 +17,9 @@ namespace PersonalPlayGround.ClientInfo.Repository
 
         public List<Client> GetAllClients()
         {
-            return _database.Clients.ToList();
+            return _database.Clients
+                            .AsNoTracking()
+                            .ToList();
         }
 
         public Client GetClientById(string clientId)
@@ -27,7 +29,10 @@ namespace PersonalPlayGround.ClientInfo.Repository
 
         public Client GetClientByUsername(string username)
         {
-            return _database.Clients.Where(client => client.UserName.Equals(username)).FirstOrDefault();
+            return _database.Clients
+                            .AsNoTracking()
+                            .Where(client => client.UserName.Equals(username))
+                            .FirstOrDefault();
         }
 
         public void AddClient(Client client)
@@ -39,11 +44,12 @@ namespace PersonalPlayGround.ClientInfo.Repository
         public RecipeReview ClientReview(string clientId, int recipeId)
         {
             return _database.RecipeReviews
-                    .Where
-                    (
-                        rr => rr.RecipeId == recipeId 
-                        && rr.ClientId == clientId
-                    ).FirstOrDefault();
+                            .AsNoTracking()
+                            .Where
+                            (
+                                rr => rr.RecipeId == recipeId 
+                                && rr.ClientId == clientId
+                            ).FirstOrDefault();
         }
     }
 }

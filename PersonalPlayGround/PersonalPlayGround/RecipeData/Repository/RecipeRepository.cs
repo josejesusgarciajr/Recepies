@@ -17,17 +17,25 @@ namespace PersonalPlayGround.RecipeData
 
         public List<Recipe> GetRecipes()
         {
-            return _database.Recipes.ToList();
+            return _database.Recipes
+                            .AsNoTracking()
+                            .ToList();
         }
 
         public List<Recipe> GetActiveRecipes()
         {
-            return _database.Recipes.Where(r => r.Active).ToList();
+            return _database.Recipes
+                            .AsNoTracking()
+                            .Where(r => r.Active)
+                            .ToList();
         }
 
         public List<Recipe> GetRecipeBySearch(string search)
         {
-            return _database.Recipes.Where(r => r.Name.Contains(search) ).ToList();
+            return _database.Recipes
+                            .AsNoTracking()
+                            .Where(r => r.Name.Contains(search))
+                            .ToList();
         }
 
         public Recipe GetRecipeById(int recipeId)
@@ -53,7 +61,7 @@ namespace PersonalPlayGround.RecipeData
 
         public void DeleteRecipe(int recipeId)
         {
-            Recipe recipe = _database.Recipes.Find(recipeId);
+            Recipe recipe = GetRecipeById(recipeId);
             _database.Entry(recipe).State = EntityState.Deleted;
             _database.SaveChanges();
         }

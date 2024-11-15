@@ -328,6 +328,7 @@
     <Compile Include="Documents\AdminAuthorize.cs" />
     <Compile Include="Documents\FileDirectory.cs" />
     <Compile Include="Documents\UploadHelper.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -343,6 +344,9 @@
     <Compile Include="RecipeData\Service\RecipeService.cs" />
     <Compile Include="RecipeReviewData\Repository\RecipeReviewRepository.cs" />
     <Compile Include="RecipeReviewData\Service\RecipeReviewService.cs" />
+    <Compile Include="Zoo\Animal.cs" />
+    <Compile Include="Zoo\AnimalService.cs" />
+    <Compile Include="Zoo\IAminal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

@@ -32,12 +32,17 @@ namespace PersonalPlayGround.RecipeReviewData.Repository
 
         public List<RecipeReview> GetRecipeReviewsByRecipeId(int recipeId)
         {
-            return _database.RecipeReviews.Where(r => r.RecipeId == recipeId).ToList();
+            return _database.RecipeReviews
+                            .AsNoTracking()
+                            .Where(r => r.RecipeId == recipeId)
+                            .ToList();
         }
 
         public List<RecipeReview> GetAllRecipeReviews()
         {
-            return _database.RecipeReviews.ToList();
+            return _database.RecipeReviews
+                            .AsNoTracking()
+                            .ToList();
         }
     }
 }
