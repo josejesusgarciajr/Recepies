@@ -24,6 +24,18 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _clientRepository.AddClient(client);
         }
 
+        public void RemoveClient(Client client)
+        {
+            Client existingClient = GetClientByUsername(client.UserName);
+
+            if (existingClient is null)
+            {
+                return;
+            }
+
+            _clientRepository.RemoveClient(client);
+        }
+
         public bool AuthorizeClient(string username, string password)
         {
             return AspNetIdentityUser.AuthorizeAspNetUser(username, password);

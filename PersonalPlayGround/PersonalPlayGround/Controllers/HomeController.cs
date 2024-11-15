@@ -1,5 +1,8 @@
-﻿using PersonalPlayGround.Extensions;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace PersonalPlayGround.Controllers
@@ -18,6 +21,8 @@ namespace PersonalPlayGround.Controllers
 
             string awesomeSoftwareEngineer = "jose jesus garcia jr";
             string pascalCase = awesomeSoftwareEngineer.ToPascalCase(); // returns JoseJesusGarciaJr
+
+            List<IdentityUser> users = AspNetIdentityUser.GetAllClientUsers();
 
             return View();
         }

@@ -100,5 +100,20 @@ namespace PersonalPlayGround.Controllers
 
             return View(identityUsersViewModel);
         }
+
+        public ActionResult DeleteIdentityUser(string clientId)
+        {
+            Client client = _clientService.GetClientById(clientId);
+
+            if (client is null)
+            {
+                return RedirectToAction("IdentityUsers", "Admin");
+            }
+
+            AspNetIdentityUser.DeleteAspNetIdentityUser(client.UserName);
+            _clientService.RemoveClient(client);
+
+            return RedirectToAction("IdentityUsers", "Admin");
+        }
     }
 }

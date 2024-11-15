@@ -11,6 +11,7 @@ namespace PersonalPlayGround.Controllers
     public class AccountController : Controller
     {
         private readonly IClientService _clientService;
+
         public AccountController(IClientService clientService)
         {
             _clientService = clientService;

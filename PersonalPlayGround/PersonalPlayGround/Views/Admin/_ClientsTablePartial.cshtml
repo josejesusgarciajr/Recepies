@@ -5,8 +5,7 @@
         <tr>
             <th>Full Name</th>
             <th>UserName</th>
-            <th>IsAdmin</th>
-            <th>Action</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,16 +14,12 @@
             <tr>
                 <td>@client.Name</td>
                 <td>@client.UserName</td>
-                @if (@client.IsAdmin == true)
-                {
-                    <td>ADMIN User</td>
-                }
-                else
-                {
-                    <td>Not Admin User</td>
-                }
                 <td>
-
+                    <a href="@Url.Action("DeleteIdentityUser", "Admin", new { clientId = client.Id })" 
+                       class="btn btn-danger"
+                       onclick="return confirm('Are you sure you want to delete this user?')">
+                        Delete
+                    </a>
                 </td>
             </tr>
         }

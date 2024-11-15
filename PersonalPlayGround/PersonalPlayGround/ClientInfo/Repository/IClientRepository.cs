@@ -9,6 +9,7 @@ namespace PersonalPlayGround.ClientInfo.Repository
         Client GetClientById(string clientId);
         Client GetClientByUsername(string username);
         void AddClient(Client client);
+        void RemoveClient(Client client);
         RecipeReview ClientReview(string clientId, int recipeId);
     }
 }

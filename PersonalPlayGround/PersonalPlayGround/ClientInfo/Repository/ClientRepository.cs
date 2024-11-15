@@ -41,6 +41,24 @@ namespace PersonalPlayGround.ClientInfo.Repository
             _database.SaveChanges();
         }
 
+        public void RemoveClient(Client client)
+        {
+            if (client is null)
+            {
+                return;
+            }
+
+            // Delete all related RecipeReviews
+            _database.RecipeReviews
+                     .RemoveRange(_database.RecipeReviews.Where(rr => rr.ClientId == client.Id));
+
+            // Delete the Client
+            _database.Entry(client).State = EntityState.Deleted;
+
+            // Save changes
+            _database.SaveChanges();
+        }
+
         public RecipeReview ClientReview(string clientId, int recipeId)
         {
             return _database.RecipeReviews
