@@ -1,0 +1,32 @@
+﻿@model List<PersonalPlayGround.ClientInfo.Client>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>UserName</th>
+            <th>IsAdmin</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var client in Model)
+        {
+            <tr>
+                <td>@client.Name</td>
+                <td>@client.UserName</td>
+                @if (@client.IsAdmin == true)
+                {
+                    <td>ADMIN User</td>
+                }
+                else
+                {
+                    <td>Not Admin User</td>
+                }
+                <td>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

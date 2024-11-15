@@ -1,0 +1,21 @@
+﻿@model PersonalPlayGround.Models.IdentityUsersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Identity Users</title>
+</head>
+<body>
+    <h1>Admin Identity Users</h1>
+    <div>
+        @Html.Partial("_ClientsTablePartial", Model.AdminClients)
+    </div>
+
+    <h1>Regular Identity Users</h1>
+    <div>
+        @Html.Partial("_ClientsTablePartial", Model.RegularClients)
+    </div>
+</body>
+</html>

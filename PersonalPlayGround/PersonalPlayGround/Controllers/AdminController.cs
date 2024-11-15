@@ -1,8 +1,14 @@
-﻿using PersonalPlayGround.Documents;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using PersonalPlayGround.ClientInfo;
+using PersonalPlayGround.ClientInfo.Repository;
+using PersonalPlayGround.Documents;
+using PersonalPlayGround.Models;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,10 +19,12 @@ namespace PersonalPlayGround.Controllers
     public class AdminController : BaseController
     {
         private readonly IRecipeService _recipeService;
+        private readonly IClientService _clientService;
         public AdminController() { }
-        public AdminController(IRecipeService recipeService)
+        public AdminController(IRecipeService recipeService, IClientService clientService)
         {
             _recipeService = recipeService;
+            _clientService = clientService;
         }
 
         // GET: Admin
@@ -75,6 +83,22 @@ namespace PersonalPlayGround.Controllers
             _recipeService.DeleteRecipe(recipeId);
 
             return RedirectToAction("SelectRecipe", new { task = "Delete" });
+        }
+
+        public ActionResult IdentityUsers()
+        {
+            List<Client> clients = _clientService.GetAllClients();
+
+            List<Client> adminClients = clients.Where(client => client.IsAdmin).ToList();
+            List<Client> regularClients = clients.Where(client => !client.IsAdmin).ToList();
+
+            var identityUsersViewModel = new IdentityUsersViewModel
+            {
+                AdminClients = adminClients,
+                RegularClients = regularClients
+            };
+
+            return View(identityUsersViewModel);
         }
     }
 }
