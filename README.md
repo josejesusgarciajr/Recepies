@@ -28,6 +28,7 @@ In the Recipe Web Application you are able to:
      - Add Recipe
      - Edit/Update Recipe
      - Delete Recipe
+     - Delete Users
 
   9. Access the API (Using Swagger)
 
