@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PersonalPlayGround.ClientInfo
@@ -24,6 +26,13 @@ namespace PersonalPlayGround.ClientInfo
             };
 
             return Tuple.Create(result, client);
+        }
+
+        public static List<IdentityUser> GetAllClientUsers()
+        {
+            var userStore = new UserStore<IdentityUser>();
+
+            return userStore.Users.ToList();
         }
 
         public static void DeleteAspNetIdentityUser(string username)
