@@ -35,10 +35,24 @@ namespace PersonalPlayGround.Controllers
 
         public ActionResult SelectRecipe(string task)
         {
+            if (string.IsNullOrEmpty(task))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+
             ViewData["Action"] = task;
             List<Recipe> recipes = _recipeService.GetRecipes();
 
-            return View(recipes);
+            List<Recipe> activeRecipes = recipes.Where(r => r.Active).ToList();
+            List<Recipe> inactiveRecipes = recipes.Where(r => !r.Active).ToList();
+
+            var recipeViewModel = new RecipeViewModel
+            {
+                ActiveRecipes = activeRecipes,
+                InactiveRecipes = inactiveRecipes
+            };
+
+            return View(recipeViewModel);
         }
 
         public ActionResult UpdateRecipe(int recipeId)

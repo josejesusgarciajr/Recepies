@@ -1,8 +1,8 @@
-﻿
+﻿@model PersonalPlayGround.Models.RecipeViewModel
 @{
     ViewBag.Title = "SelectRecipe";
 
-    var action = ViewData["Action"];
+    string action = ViewData["Action"] as string;
 }
 
 @if (action.Equals("Update"))
@@ -15,37 +15,8 @@
     <h2 class="display-4 text-center">Delete Recipes</h2>
 }
 
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var recipe in Model)
-        {
-            <tr>
-                <th scope="row">@recipe.Id</th>
-                <td>@recipe.Name</td>
-                <td>@recipe.Description</td>
+<h2 class="display-4">Active Recipes</h2>
+@Html.Partial("_RecipeTablePartial", Model.ActiveRecipes);
 
-                @if (action.Equals("Update"))
-                {
-                    <td>
-                        <a href="@Url.Action("UpdateRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-primary">Update</a>
-                    </td>
-                }
-
-                @if (action.Equals("Delete"))
-                {
-                    <td>
-                        <a href="@Url.Action("DeleteRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-danger">Delete</a>
-                    </td>
-                }
-            </tr>
-        }
-    </tbody>
-</table>
+<h2 class="display-4">Inactive Recipes</h2>
+@Html.Partial("_RecipeTablePartial", Model.InactiveRecipes);
