@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using PersonalPlayGround.ClientInfo;
-using PersonalPlayGround.Extensions;
+﻿using PersonalPlayGround.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace PersonalPlayGround.Controllers

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using PersonalPlayGround.RecipeReviewData;
+﻿using PersonalPlayGround.RecipeReviewData;
 using System.Collections.Generic;
 
 namespace PersonalPlayGround.ClientInfo.Repository

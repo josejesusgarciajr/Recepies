@@ -2,8 +2,8 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PersonalPlayGround.ClientInfo
 {
@@ -32,7 +32,9 @@ namespace PersonalPlayGround.ClientInfo
         {
             var userStore = new UserStore<IdentityUser>();
 
-            return userStore.Users.ToList();
+            return userStore.Users
+                            .AsNoTracking()
+                            .ToList();
         }
 
         public static void DeleteAspNetIdentityUser(string username)

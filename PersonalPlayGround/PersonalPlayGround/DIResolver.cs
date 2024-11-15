@@ -1,9 +1,7 @@
-﻿using PersonalPlayGround.ClientInfo;
-using PersonalPlayGround.ClientInfo.Repository;
+﻿using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Repository;
 using PersonalPlayGround.RecipeData.Service;
-using PersonalPlayGround.RecipeReviewData;
 using PersonalPlayGround.RecipeReviewData.Repository;
 using PersonalPlayGround.RecipeReviewData.Service;
 using System.Web.Mvc;
