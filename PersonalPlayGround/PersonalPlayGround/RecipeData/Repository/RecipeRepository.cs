@@ -48,7 +48,7 @@ namespace PersonalPlayGround.RecipeData
             _database.Entry(recipe).State = EntityState.Modified;
             _database.SaveChanges();
 
-            return _database.Recipes.Find(recipe.Id);
+            return recipe;
         }
 
         public int AddRecipe(Recipe recipe)
