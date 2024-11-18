@@ -1,10 +1,12 @@
 ﻿@{ 
     string userName = "Please Log In";
     var isAdmin = false;
+    var loggedOut = true;
 
     if(!String.IsNullOrEmpty(User.Identity.Name))
     {
         userName = User.Identity.Name;
+        loggedOut = false;
     }
 
     if(ViewBag.IsAdmin != null)
@@ -45,7 +47,10 @@
                     }
                 </ul>
             </div>
-            @Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "navbar-brand" })
+            @if (!loggedOut)
+            {
+                @Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "navbar-brand" })
+            }
         </div>
     </nav>
     <div class="container body-content">
