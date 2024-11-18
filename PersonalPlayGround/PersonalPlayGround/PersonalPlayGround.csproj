@@ -320,6 +320,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorHandlerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Controllers\RecipeReviewController.cs" />
@@ -419,11 +420,13 @@
     <Content Include="Views\Admin\IdentityUsers.cshtml" />
     <Content Include="Views\Admin\_ClientsTablePartial.cshtml" />
     <Content Include="Views\Admin\_RecipeTablePartial.cshtml" />
+    <Content Include="Views\ErrorHandler\PageNotFoundError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Recipes\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
