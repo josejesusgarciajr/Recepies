@@ -352,6 +352,7 @@
     <Compile Include="Zoo\IAminal.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Animations\slide-in.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />

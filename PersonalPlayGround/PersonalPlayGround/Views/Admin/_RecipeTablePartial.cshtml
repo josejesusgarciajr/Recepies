@@ -1,5 +1,9 @@
 ﻿@model List<PersonalPlayGround.RecipeData.Recipe>
 
+@{
+    int? modifiedRecepieId = ViewBag.ModifiedRecipeId;
+}
+
 <table class="table">
     <thead class="thead-light">
         <tr>
@@ -12,7 +16,7 @@
     <tbody>
         @foreach (var recipe in Model)
         {
-            <tr scope="row">
+            <tr scope="row" data-id="@recipe.Id">
                 <td class="col">@recipe.Id</td>
                 <td class="col-3">@recipe.Name</td>
                 <td class="col-6">@recipe.Description</td>
@@ -30,3 +34,23 @@
         }
     </tbody>
 </table>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var modifiedRecipeId = '@ViewBag.ModifiedRecipeId';
+
+        if (modifiedRecipeId) {
+            var row = $('tr[data-id="' + modifiedRecipeId + '"]');
+
+            if (row.length) {
+                // Add the class dynamically to trigger the animation with a slight delay
+                setTimeout(function() {
+                    row.addClass('new-recipe');
+                }, 135); // Slight delay to ensure it's rendered
+            }
+        }
+    });
+</script>

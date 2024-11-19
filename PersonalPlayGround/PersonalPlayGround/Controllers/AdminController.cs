@@ -32,7 +32,7 @@ namespace PersonalPlayGround.Controllers
             return View();
         }
 
-        public ActionResult SelectRecipe()
+        public ActionResult SelectRecipe(int? modifiedRecipeId = null)
         {
             List<Recipe> recipes = _recipeService.GetRecipes();
 
@@ -44,6 +44,8 @@ namespace PersonalPlayGround.Controllers
                 ActiveRecipes = activeRecipes,
                 InactiveRecipes = inactiveRecipes
             };
+
+            ViewBag.ModifiedRecipeId = modifiedRecipeId;
 
             return View(recipeViewModel);
         }
@@ -70,7 +72,7 @@ namespace PersonalPlayGround.Controllers
 
             _recipeService.UpdateRecipe(recipe);
 
-            return RedirectToAction("SelectRecipe", "Admin", new { });
+            return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeId = recipe.Id });
         }
 
         public ActionResult AddRecipe()
@@ -82,7 +84,7 @@ namespace PersonalPlayGround.Controllers
         {
             int newRecipeId = _recipeService.AddRecipe(recipe, uploadImage);
 
-            return RedirectToAction("SelectRecipe", "Admin", new { });
+            return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeId = newRecipeId });
         }
 
         public ActionResult DeleteRecipe(int recipeId)
