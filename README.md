@@ -14,6 +14,7 @@ In the Recipe Web Application you are able to:
   1. Account Management (Using Identity Framework)
      - Create an Account
      - Login with Account
+     - Logout
 
   3. Recepie
      - View all Recipes (Active Only)
