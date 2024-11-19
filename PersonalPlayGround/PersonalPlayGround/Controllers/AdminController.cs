@@ -82,7 +82,7 @@ namespace PersonalPlayGround.Controllers
         {
             int newRecipeId = _recipeService.AddRecipe(recipe, uploadImage);
 
-            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = newRecipeId });
+            return RedirectToAction("SelectRecipe", "Admin", new { });
         }
 
         public ActionResult DeleteRecipe(int recipeId)
