@@ -1,9 +1,5 @@
 ﻿@model List<PersonalPlayGround.RecipeData.Recipe>
 
-@{
-    string action = ViewData["Action"] as string;
-}
-
 <table class="table">
     <thead class="thead-light">
         <tr>
@@ -21,23 +17,15 @@
                 <td class="col-3">@recipe.Name</td>
                 <td class="col-6">@recipe.Description</td>
 
-                @if (action.Equals("Update"))
-                {
-                    <td class="col-2">
-                        <a href="@Url.Action("UpdateRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-primary">Update</a>
-                    </td>
-                }
+                <td class="col-2">
+                    <a href="@Url.Action("UpdateRecipe", "Admin", new { recipeId = recipe.Id })" class="btn btn-outline-primary">Update</a>
 
-                @if (action.Equals("Delete"))
-                {
-                    <td class="col-2">
-                        <a href="@Url.Action("DeleteRecipe", "Admin", new { recipeId = recipe.Id })"
-                           onclick="return confirm('Are you sure you want to delete this recipe?')"
-                           class="btn btn-outline-danger">
-                            Delete
-                        </a>
-                    </td>
-                }
+                    <a href="@Url.Action("DeleteRecipe", "Admin", new { recipeId = recipe.Id })"
+                       onclick="return confirm('Are you sure you want to delete this recipe?')"
+                       class="btn btn-outline-danger">
+                        Delete
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

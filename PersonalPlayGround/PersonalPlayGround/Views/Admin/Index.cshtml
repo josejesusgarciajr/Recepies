@@ -14,20 +14,10 @@
 
     <div class="row">
         <div class="col d-flex justify-content-center">
-            <a href="@Url.Action("AddRecipe", "Admin")" class="btn btn-outline-dark">Add Recipe</a>
+            <a href="@Url.Action("SelectRecipe", "Admin")" class="btn btn-outline-dark" style="width: 135px;">Recipes</a>
         </div>
         <div class="col d-flex justify-content-center">
-            <a href="@Url.Action("SelectRecipe", "Admin", new { task = "Update"})" class="btn btn-outline-dark">Update Recipes</a>
-        </div>
-        <div class="col d-flex justify-content-center">
-            <a href="@Url.Action("SelectRecipe", "Admin", new { task = "Delete"})" class="btn btn-outline-dark">Delete Recipes</a>
-        </div>
-    </div>
-
-    <br />
-    <div class="row">
-        <div class="col d-flex justify-content-center">
-            <a href="@Url.Action("IdentityUsers", "Admin", new { })" class="btn btn-outline-dark">Identity Users</a>
+            <a href="@Url.Action("IdentityUsers", "Admin", new { })" class="btn btn-outline-dark" style="width: 135px;">Identity Users</a>
         </div>
     </div>
 </div>

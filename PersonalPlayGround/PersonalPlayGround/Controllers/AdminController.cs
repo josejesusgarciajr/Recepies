@@ -32,14 +32,8 @@ namespace PersonalPlayGround.Controllers
             return View();
         }
 
-        public ActionResult SelectRecipe(string task)
+        public ActionResult SelectRecipe()
         {
-            if (string.IsNullOrEmpty(task))
-            {
-                return RedirectToAction("Index", "Admin");
-            }
-
-            ViewData["Action"] = task;
             List<Recipe> recipes = _recipeService.GetRecipes();
 
             List<Recipe> activeRecipes = recipes.Where(r => r.Active).ToList();
@@ -76,7 +70,7 @@ namespace PersonalPlayGround.Controllers
 
             _recipeService.UpdateRecipe(recipe);
 
-            return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipe.Id });
+            return RedirectToAction("SelectRecipe", "Admin", new { });
         }
 
         public ActionResult AddRecipe()

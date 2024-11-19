@@ -8,12 +8,15 @@
     <title>Identity Users</title>
 </head>
 <body>
-    <h1>Admin Identity Users</h1>
+    <h1 class="display-4">Identity User Dashboard</h1>
+    <hr />
+
+    <h2 class="display-4">Admin Identity Users</h2>
     <div>
         @Html.Partial("_ClientsTablePartial", Model.AdminClients)
     </div>
 
-    <h1>Regular Identity Users</h1>
+    <h2 class="display-6">Regular Identity Users</h2>
     <div>
         @Html.Partial("_ClientsTablePartial", Model.RegularClients)
     </div>

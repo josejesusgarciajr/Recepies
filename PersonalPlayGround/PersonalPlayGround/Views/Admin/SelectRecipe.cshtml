@@ -1,22 +1,13 @@
 ﻿@model PersonalPlayGround.Models.RecipeViewModel
 @{
     ViewBag.Title = "SelectRecipe";
-
-    string action = ViewData["Action"] as string;
 }
 
-@if (action.Equals("Update"))
-{
-    <h2 class="display-4 text-center">Update Recipes</h2>
-}
+<h1 class="display-4">Recipes Dashboard</h1>
+<hr />
 
-@if (action.Equals("Delete"))
-{
-    <h2 class="display-4 text-center">Delete Recipes</h2>
-}
-
-<h2 class="display-4">Active Recipes</h2>
+<h2 class="display-6">Active Recipes</h2>
 @Html.Partial("_RecipeTablePartial", Model.ActiveRecipes)
 
-<h2 class="display-4">Inactive Recipes</h2>
+<h2 class="display-6">Inactive Recipes</h2>
 @Html.Partial("_RecipeTablePartial", Model.InactiveRecipes)
