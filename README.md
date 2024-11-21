@@ -3,7 +3,7 @@ This is a personal project I have been working on to learn React.
 This Project is build using 
 
   - ASP.NET Framework
-  - Entity Framework
+  - Entity Framework (Enabled Migrations)
   - Identity Framework (Login Authentication)
   - Javascript
   - React
