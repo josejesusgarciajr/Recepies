@@ -19,6 +19,7 @@ namespace PersonalPlayGround.RecipeReviewData.Repository
             _database.Entry(recipeReview).State = EntityState.Added;
             _database.SaveChanges();
         }
+
         public void UpdateRecipeReview(RecipeReview recipeReview)
         {
             _database.Entry(recipeReview).State = EntityState.Modified;

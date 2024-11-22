@@ -56,7 +56,7 @@ namespace PersonalPlayGround.Controllers
 
         public ActionResult UpdateRecipeReviewInDatabase(RecipeReview recipeReview)
         {
-            recipeReview.ReviewDate = DateTime.UtcNow;
+            recipeReview.ReviewDate = DateTime.Now;
             _recipeReviewService.UpdateRecipeReview(recipeReview);
 
             return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId, fromPage = "UpdateRecipeReview" });

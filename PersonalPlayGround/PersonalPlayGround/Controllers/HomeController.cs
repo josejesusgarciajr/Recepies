@@ -24,7 +24,7 @@ namespace PersonalPlayGround.Controllers
 
             List<IdentityUser> users = AspNetIdentityUser.GetAllClientUsers();
 
-            return View();
+            return RedirectToAction("Index", "Recipe");
         }
 
         public ActionResult About()
