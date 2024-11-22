@@ -2,8 +2,95 @@
     ViewBag.Title = "About";
 }
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional information.</p>
+    <h3>How this Project was Built</h3>
+    <hr />
+
+    <h3>Tech Stack:</h3>
+    <ul class="tech-stack">
+        <li>C#</li>
+        <li>ASP.NET MVC</li>
+        <li>Entity Framework</li>
+        <li>Identity Framework (Login Authentication)</li>
+        <li>Javascript</li>
+        <li>React</li>
+        <li>jQuery</li>
+        <li><a href="@Url.Content("~/swagger")" target="_blank">Swagger (API)</a></li>
+    </ul>
+
+    <hr />
+
+    <h3>Implemented With:</h3>
+
+    <div class="container">
+        <h6>Dependency Injection</h6>
+
+        <ul>
+            <li>Passing in dependencies via the constructor, avoiding instantiation within classes. </li>
+            <li>Created Interfaces; repositories and services implement these interfaces. Registering the Interface with the repositories/services.</li>
+            <li>Promotes decoupling and facilitates mock testing.</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h6>Global Exception Handler</h6>
+
+        <ol>
+            <li>Custom class: <code>GlobalExceptionHandler</code> which extends <code>HandleErrorAttribute</code></li>
+            <li>Registered the custom error handler in <code>FilterConfig.cs</code></li>
+            <li>Added global filter registration in <code>Global.asax.cs</code> inside the <code>Application_Start()</code> method</li>
+            <li>Created a custom <code>Error.cshmtl</code> razor page in <code>View/Shared</code> folder</li>
+            <li>Added <code>customErrors</code> in <code>Web.config</code>, setting the mode to On, and defined specific error handling for <code>statusCodes</code>, e.g., 404</li>
+            <li>Created an <code>ErrorHandleController</code> to handle custom error messages for specific statusCodes. For example <code>PageNotFound (404)</code></li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h6>Migrations</h6>
+
+        <ol>
+            <li>Ran: <code>Enable-Migrations</code> in Pacakge Manager Console</li>
+            <li>Run: <code>Add-Migration NAME</code> whenever a change is make to the database</li>
+            <li>Run: <code>Update-Database</code> to relect changes to the database</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h6>Optimized for Performance</h6>
+
+        <ul>
+            <li>Used <code>.AsNoTracking()</code> for read-only qureies</li>
+            <li>Applied <code>.Where()</code> filters as early as possible to reduce unnecessary data processing</li>
+            <li>Used <code>.Select()</code> to retrieve only the necessary columns</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h6>Repositories</h6>
+
+        <p>Handles raw data retrieval from the database, such as fetching a list of users or specific entities.</p>
+    </div>
+
+    <div class="container">
+        <h6>Services</h6>
+
+        <p>Manages business logic, including data validation, calculations, or additional processing.</p>
+    </div>
+
 </main>
+
+<style>
+    .tech-stack {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Two columns */
+        gap: 10px; /* Space between items */
+        list-style-type: circle; /* Removes bullets */
+        padding: 0; /* Removes default padding */
+        margin: 0 0 0 25px; /* Adds space to the left */
+    }
+
+    .tech-stack li {
+        font-size: 1rem; /* Adjust font size if needed */
+        padding: 5px 0;
+    }
+</style>
