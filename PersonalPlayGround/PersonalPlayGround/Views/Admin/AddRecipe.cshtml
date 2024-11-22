@@ -14,7 +14,14 @@
 
             <div class="form-group">
                 <label for="recipeName">Recipe Name:</label>
-                @Html.TextBox("Name", null, new { @class = "form-control", @id = "recipeName", @style = "width: 100%;", placeholder = "Agua De Melon" })
+                @Html.TextBox("Name", null, new
+                {
+                    @class = (ViewData.ModelState["Name"]?.Errors.Any() == true) ? "form-control is-invalid" : "form-control",
+                    @id = "recipeName",
+                    @style = "width: 100%;",
+                    placeholder = "Agua De Melon"
+                })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "invalid-feedback" })
             </div>
 
             <br />

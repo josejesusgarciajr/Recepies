@@ -8,6 +8,7 @@ namespace PersonalPlayGround.RecipeData
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Recipe Name is required")]
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageURL { get; set; }

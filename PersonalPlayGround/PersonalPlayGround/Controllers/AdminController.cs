@@ -5,6 +5,7 @@ using PersonalPlayGround.Documents;
 using PersonalPlayGround.Models;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -82,6 +83,11 @@ namespace PersonalPlayGround.Controllers
 
         public ActionResult AddRecipeToDatabase(Recipe recipe, HttpPostedFileBase uploadImage)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("AddRecipe", recipe);
+            }
+
             int newRecipeId = _recipeService.AddRecipe(recipe, uploadImage);
 
             return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeId = newRecipeId });

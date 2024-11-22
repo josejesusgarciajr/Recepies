@@ -338,6 +338,10 @@
     <Compile Include="Migrations\202404092024458_InitialCreate.designer.cs">
       <DependentUpon>202404092024458_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202411220502331_MakeNameRequiredForRecipe.cs" />
+    <Compile Include="Migrations\202411220502331_MakeNameRequiredForRecipe.designer.cs">
+      <DependentUpon>202411220502331_MakeNameRequiredForRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityUsersViewModel.cs" />
     <Compile Include="Models\RecipeViewModel.cs" />
@@ -467,6 +471,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202404092024458_InitialCreate.resx">
       <DependentUpon>202404092024458_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202411220502331_MakeNameRequiredForRecipe.resx">
+      <DependentUpon>202411220502331_MakeNameRequiredForRecipe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
