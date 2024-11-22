@@ -65,6 +65,11 @@ namespace PersonalPlayGround.Controllers
 
         public ActionResult UpdateRecipeInDatabase(Recipe recipe, HttpPostedFileBase uploadImage)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("UpdateRecipe", recipe);
+            }
+
             if (uploadImage  != null)
             {
                 UploadHelper.UploadRecipeImage(uploadImage);
