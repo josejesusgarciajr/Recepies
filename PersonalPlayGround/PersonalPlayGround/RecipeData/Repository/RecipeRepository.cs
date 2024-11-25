@@ -43,6 +43,13 @@ namespace PersonalPlayGround.RecipeData
             return _database.Recipes.Find(recipeId);
         }
 
+        public Recipe GetRecipeWithRelatedDataByRecipeId(int recipeId)
+        {
+            return _database.Recipes.AsNoTracking()
+                                    .Include(r => r.Ratings.Select(rr => rr.Client))
+                                    .FirstOrDefault(r => r.Id == recipeId);
+        }
+
         public Recipe UpdateRecipe(Recipe recipe)
         {
             _database.Entry(recipe).State = EntityState.Modified;

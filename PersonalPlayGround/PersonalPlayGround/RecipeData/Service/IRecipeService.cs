@@ -9,6 +9,7 @@ namespace PersonalPlayGround.RecipeData.Service
         List<Recipe> GetActiveRecipes();
         List<Recipe> GetRecipeBySearch(string search);
         Recipe GetRecipeById(int recipeId);
+        Recipe GetRecipeWithRelatedDataByRecipeId(int recipeId);
         Recipe UpdateRecipe(Recipe recipe);
         int AddRecipe(Recipe recipe, HttpPostedFileBase uploadImage);
         void DeleteRecipe(int recipeId);

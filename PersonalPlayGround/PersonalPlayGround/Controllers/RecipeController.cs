@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
@@ -38,9 +39,8 @@ namespace PersonalPlayGround.Controllers
             {
                 return Index();
             }
-            
-            // Get Recipe
-            Recipe recipe = _recipeService.GetRecipeById(recipeId.Value);
+
+            Recipe recipe = _recipeService.GetRecipeWithRelatedDataByRecipeId(recipeId.Value);
 
             // check if recipe exists
             if(recipe == null)
@@ -52,15 +52,6 @@ namespace PersonalPlayGround.Controllers
             if(!recipe.Active)
             {
                 return RedirectToAction("Index", "Recipe");
-            }
-
-            // Get Recipe Rating/Review
-            recipe.Ratings = _recipeReviewService.GetRecipeReviewsByRecipeId(recipeId.Value);
-
-            foreach(RecipeReview recipeReview in recipe.Ratings)
-            {
-                // Get Client by Recipe Review
-                recipeReview.Client = _clientService.GetClientById(recipeReview.ClientId);
             }
 
             // Check if client left a review 

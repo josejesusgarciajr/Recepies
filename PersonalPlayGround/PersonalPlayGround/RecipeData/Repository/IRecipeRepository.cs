@@ -8,6 +8,7 @@ namespace PersonalPlayGround.RecipeData.Repository
         List<Recipe> GetActiveRecipes();
         List<Recipe> GetRecipeBySearch(string search);
         Recipe GetRecipeById(int recipeId);
+        Recipe GetRecipeWithRelatedDataByRecipeId(int recipeId);
         Recipe UpdateRecipe(Recipe recipe);
         int AddRecipe(Recipe recipe);
         void DeleteRecipe(int recipeId);

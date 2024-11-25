@@ -41,6 +41,18 @@ namespace PersonalPlayGround.RecipeData.Service
             return recipe;
         }
 
+        public Recipe GetRecipeWithRelatedDataByRecipeId(int recipeId)
+        {
+            Recipe recipe = _recipeRepository.GetRecipeWithRelatedDataByRecipeId(recipeId);
+
+            if (string.IsNullOrEmpty(recipe.ImageURL))
+            {
+                recipe.ImageURL = FileDirectory.Image_Needed;
+            }
+
+            return recipe;
+        }
+
         public Recipe UpdateRecipe(Recipe recipe)
         {
             return _recipeRepository.UpdateRecipe(recipe);
