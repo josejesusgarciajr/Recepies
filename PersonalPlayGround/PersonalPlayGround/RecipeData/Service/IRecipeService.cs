@@ -13,5 +13,7 @@ namespace PersonalPlayGround.RecipeData.Service
         Recipe UpdateRecipe(Recipe recipe);
         int AddRecipe(Recipe recipe, HttpPostedFileBase uploadImage);
         void DeleteRecipe(int recipeId);
+        void SetActiveStatusToAllRecipes(bool activeStatus);
+        List<int> InactivateAllWithoutImage();
     }
 }

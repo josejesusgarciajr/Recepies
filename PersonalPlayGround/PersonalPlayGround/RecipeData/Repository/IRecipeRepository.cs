@@ -12,5 +12,7 @@ namespace PersonalPlayGround.RecipeData.Repository
         Recipe UpdateRecipe(Recipe recipe);
         int AddRecipe(Recipe recipe);
         void DeleteRecipe(int recipeId);
+        void SetActiveStatusToAllRecipes(bool activeStatus);
+        List<int> InactivateAllWithoutImage();
     }
 }

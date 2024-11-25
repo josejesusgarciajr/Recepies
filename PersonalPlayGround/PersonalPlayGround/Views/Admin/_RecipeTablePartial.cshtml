@@ -1,7 +1,7 @@
 ﻿@model List<PersonalPlayGround.RecipeData.Recipe>
 
 @{
-    int? modifiedRecepieId = ViewBag.ModifiedRecipeId;
+    List<int> modifiedRecepieIds = ViewBag.ModifiedRecipeId;
 }
 
 <table class="table">
@@ -40,9 +40,12 @@
 
 <script>
     $(document).ready(function() {
-        var modifiedRecipeId = '@ViewBag.ModifiedRecipeId';
+        // Serialize the C# List<int> to a JavaScript array
+        var modifiedRecipeIds = @Html.Raw(Json.Encode(ViewBag.ModifiedRecipeIds));
 
-        if (modifiedRecipeId) {
+        console.log(modifiedRecipeIds);
+
+        modifiedRecipeIds.forEach(function (modifiedRecipeId) {
             var row = $('tr[data-id="' + modifiedRecipeId + '"]');
 
             if (row.length) {
@@ -51,6 +54,6 @@
                     row.addClass('new-recipe');
                 }, 135); // Slight delay to ensure it's rendered
             }
-        }
+        });
     });
 </script>

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using PersonalPlayGround.ClientInfo;
+﻿using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.Documents;
 using PersonalPlayGround.Models;
@@ -33,7 +32,7 @@ namespace PersonalPlayGround.Controllers
             return View();
         }
 
-        public ActionResult SelectRecipe(int? modifiedRecipeId = null)
+        public ActionResult SelectRecipe(string modifiedRecipeIds = null)
         {
             List<Recipe> recipes = _recipeService.GetRecipes();
 
@@ -46,7 +45,18 @@ namespace PersonalPlayGround.Controllers
                 InactiveRecipes = inactiveRecipes
             };
 
-            ViewBag.ModifiedRecipeId = modifiedRecipeId;
+            List<int> modifiedIds = new List<int>();
+
+            if (!string.IsNullOrEmpty(modifiedRecipeIds))
+            {
+                modifiedIds = modifiedRecipeIds
+                                .Split(',')
+                                .Select(int.Parse)
+                                .ToList();
+            }
+
+
+            ViewBag.ModifiedRecipeIds = modifiedIds;
 
             return View(recipeViewModel);
         }
@@ -78,7 +88,17 @@ namespace PersonalPlayGround.Controllers
 
             _recipeService.UpdateRecipe(recipe);
 
-            return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeId = recipe.Id });
+            return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeIds = recipe.Id });
+        }
+
+        public ActionResult InactivateAllWithoutImage()
+        {
+            List<int> inactiveRecipeIds = _recipeService.InactivateAllWithoutImage();
+
+            // Serialize the list to a comma-separated string
+            string serializedIds = string.Join(",", inactiveRecipeIds);
+
+            return RedirectToAction("SelectRecipe", "Admin", new { modifiedRecipeIds = serializedIds });
         }
 
         public ActionResult AddRecipe()

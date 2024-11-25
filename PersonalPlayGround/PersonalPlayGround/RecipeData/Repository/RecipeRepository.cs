@@ -3,6 +3,7 @@ using PersonalPlayGround.RecipeData.Repository;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace PersonalPlayGround.RecipeData
@@ -71,6 +72,16 @@ namespace PersonalPlayGround.RecipeData
             Recipe recipe = GetRecipeById(recipeId);
             _database.Entry(recipe).State = EntityState.Deleted;
             _database.SaveChanges();
+        }
+
+        public void SetActiveStatusToAllRecipes(bool activeStatus)
+        {
+            _database.Database.ExecuteSqlCommand("[dbo].[SetActiveStatusToAllRecipes] @ActiveStatus", new SqlParameter("@ActiveStatus", activeStatus));
+        }
+
+        public List<int> InactivateAllWithoutImage()
+        {
+            return _database.Database.SqlQuery<int>("[dbo].[InactivateAllWithoutImage]").ToList();
         }
     }
 }

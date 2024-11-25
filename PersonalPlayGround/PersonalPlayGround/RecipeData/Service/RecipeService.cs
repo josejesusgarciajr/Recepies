@@ -73,5 +73,15 @@ namespace PersonalPlayGround.RecipeData.Service
         {
             _recipeRepository.DeleteRecipe(recipeId);
         }
+
+        public void SetActiveStatusToAllRecipes(bool activeStatus)
+        {
+            _recipeRepository.SetActiveStatusToAllRecipes(activeStatus);
+        }
+
+        public List<int> InactivateAllWithoutImage()
+        {
+            return _recipeRepository.InactivateAllWithoutImage();
+        }
     }
 }
