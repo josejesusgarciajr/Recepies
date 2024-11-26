@@ -17,6 +17,8 @@ namespace PersonalPlayGround.Controllers
             _recipeService = recipeService;
             _recipeReviewService = recipeReviewService;
         }
+
+        [Route("RecipeReview/AddRecipeReview/{recipeId}")]
         public ActionResult AddRecipeReview(int recipeId)
         {
             Recipe recipe = _recipeService.GetRecipeById(recipeId);
@@ -45,6 +47,7 @@ namespace PersonalPlayGround.Controllers
             return RedirectToAction("GetRecipeById", "Recipe", new { recipeId = recipeReview.RecipeId, fromPage = "AddRecipeReview" });
         }
 
+        [Route("RecipeReview/UpdateRecipeReview/{recipeReviewId}")]
         public ActionResult UpdateRecipeReview(int recipeReviewId)
         {
             RecipeReview recipeReview = _recipeReviewService.GetRecipeReviewById(recipeReviewId);

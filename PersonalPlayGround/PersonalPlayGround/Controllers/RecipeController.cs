@@ -34,6 +34,7 @@ namespace PersonalPlayGround.Controllers
         }
 
         // GET: Recipe/Id
+        [Route("Recipe/{recipeId}")]
         public ActionResult GetRecipeById(int? recipeId, string fromPage = "")
         {
             if (recipeId == null)

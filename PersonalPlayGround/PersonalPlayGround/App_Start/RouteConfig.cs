@@ -9,29 +9,31 @@ namespace PersonalPlayGround
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapMvcAttributeRoutes(); // Enables attribute routing
 
             // custom routing for GetRecipeById: Recipe Controller
-            routes.MapRoute(
-                name: "Recipe",
-                url: "Recipe/{recipeId}",
-                defaults: new { controller = "Recipe", action = "GetRecipeById" },
-                constraints: new { recipeId = @"\d+" } // Ensure 'id' is numeric
-            );
+            //routes.MapRoute(
+            //    name: "Recipe",
+            //    url: "Recipe/{recipeId}",
+            //    defaults: new { controller = "Recipe", action = "GetRecipeById" },
+            //    constraints: new { recipeId = @"\d+" } // Ensure 'id' is numeric
+            //);
 
             // custom routing for AddRecipeReview: RecipeReview Controller
-            routes.MapRoute(
-                name: "AddRecipeReview",
-                url: "RecipeReview/AddRecipeReview/{recipeId}",
-                defaults: new { controller = "RecipeReview", action = "AddRecipeReview" },
-                constraints: new { recipeId = @"\d+" } // Ensure 'id' is numeric
-            );
+            //routes.MapRoute(
+            //    name: "AddRecipeReview",
+            //    url: "RecipeReview/AddRecipeReview/{recipeId}",
+            //    defaults: new { controller = "RecipeReview", action = "AddRecipeReview" },
+            //    constraints: new { recipeId = @"\d+" } // Ensure 'id' is numeric
+            //);
 
-            routes.MapRoute(
-                name: "UpdateRecipeReview",
-                url: "RecipeReview/UpdateRecipeReview/{recipeReviewId}",
-                defaults: new { controller = "RecipeReview", action = "UpdateRecipeReview" },
-                constraints: new { recipeReviewId = @"\d+" }
-            );
+            //// custom routing for UpdateRecipeReview: RecipeReview Controller
+            //routes.MapRoute(
+            //    name: "UpdateRecipeReview",
+            //    url: "RecipeReview/UpdateRecipeReview/{recipeReviewId}",
+            //    defaults: new { controller = "RecipeReview", action = "UpdateRecipeReview" },
+            //    constraints: new { recipeReviewId = @"\d+" }
+            //);
 
             // default routing
             routes.MapRoute(
