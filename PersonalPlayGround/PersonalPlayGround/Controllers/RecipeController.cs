@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
 using PersonalPlayGround.RecipeData;
 using PersonalPlayGround.RecipeData.Service;
-using PersonalPlayGround.RecipeReviewData;
 using PersonalPlayGround.RecipeReviewData.Service;
 
 namespace PersonalPlayGround.Controllers
@@ -42,14 +40,8 @@ namespace PersonalPlayGround.Controllers
 
             Recipe recipe = _recipeService.GetRecipeWithRelatedDataByRecipeId(recipeId.Value);
 
-            // check if recipe exists
-            if(recipe == null)
-            {
-                return RedirectToAction("Index", "Recipe");
-            }
-
-            // check if recipe is active
-            if(!recipe.Active)
+            // check if recipe exists or if recipe is inactive
+            if(recipe == null || !recipe.Active)
             {
                 return RedirectToAction("Index", "Recipe");
             }
