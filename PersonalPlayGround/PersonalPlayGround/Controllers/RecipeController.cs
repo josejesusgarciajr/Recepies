@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using PersonalPlayGround.ClientInfo;
 using PersonalPlayGround.ClientInfo.Repository;
@@ -14,6 +15,8 @@ namespace PersonalPlayGround.Controllers
         private readonly IRecipeService _recipeService;
         private readonly IRecipeReviewService _recipeReviewService;
         private readonly IClientService _clientService;
+
+        private Queue<DateTime> SkippedSongsDateTime { get; set; } = new Queue<DateTime>();
         public RecipeController() { }
         public RecipeController(IRecipeService recipeService, IRecipeReviewService recipeReviewService, IClientService clientService)
         {

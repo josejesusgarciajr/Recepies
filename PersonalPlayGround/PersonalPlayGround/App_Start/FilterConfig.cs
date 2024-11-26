@@ -7,8 +7,8 @@ namespace PersonalPlayGround
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute()); // default
             filters.Add(new GlobalExceptionHandler()); // custom
+            filters.Add(new HandleErrorAttribute()); // default
         }
     }
 }
